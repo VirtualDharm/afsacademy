@@ -38,7 +38,7 @@ app.use(async (req, res) => {
     });
 
     // copy headers
-    for (const [k, v] of response.headers) res.setHeader(k, v);
+    response.headers.forEach((v, k) => res.setHeader(k, v));
 
     // modify HTML content before sending (optional)
     const contentType = response.headers.get("content-type") || "";
