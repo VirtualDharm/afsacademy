@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="media/logo1.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AFS Basketball Academy</title>
+    <title>Peace Sports Academy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
@@ -14,5 +14,54 @@
   <body>
     <div id="root"></div>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+
+    <!-- Runtime text replacement for Peace Sports Academy -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const replacements = {
+          "AFS Basketball Academy": "Peace Sports Academy",
+          "AFS Academy": "Peace Sports Academy",
+          "AFS": "Peace Sports Academy",
+          "Building Champions, Shaping Futures.": "Building Champions, Shaping Futures.",
+          "Founded in": "Founded in 2021, Peace Sports Academy is Lucknow’s largest multi-sports academy, offering professional training in Taekwondo, Skating, Badminton, and Gymnastics. With certified coaches, modern facilities, and personalized attention, we have produced numerous state and national champions. Join us to build confidence, boost fitness, and unlock your true potential.",
+          "Sector-6, Gomtinagar": "Peace Sports Academy, Sector-6, Gomtinagar, Badhamau, Lucknow, UP",
+          "8687804879": "8687804879",
+          "89572 73494": "89572 73494",
+          "6387531144": "6387531144",
+          "officialpeacesportsacademy@gmail.com": "officialpeacesportsacademy@gmail.com",
+          "Taekwondo": "Taekwondo",
+          "Skating": "Skating",
+          "Gymnastics": "Gymnastics",
+          "Badminton": "Badminton",
+          "Zumba": "Zumba",
+          "Dharmendra Kumar": "Dharmendra Kumar",
+          "Pratibha": "Pratibha",
+          "Swati Gupta": "Swati Gupta",
+          "Jeetendra Shah": "Jeetendra Shah",
+          "Shashank Verma": "Shashank Verma",
+          "Sanidhya Gupta": "Sanidhya Gupta",
+          "Shubham": "Shubham",
+          "Sakshi": "Sakshi",
+          "Yusuf": "Yusuf",
+          "Akansha": "Akansha",
+          "Pradumn Yadav": "Pradumn Yadav",
+          "Harshit Tiwari": "Harshit Tiwari",
+          "Dheeraj": "Dheeraj",
+          "Virendra": "Virendra",
+          "Aman bajpai": "Aman Bajpai",
+          "Adarsh": "Adarsh"
+        };
+
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+          for (const [oldText, newText] of Object.entries(replacements)) {
+            if (node.nodeValue.includes(oldText)) {
+              node.nodeValue = node.nodeValue.replaceAll(oldText, newText);
+            }
+          }
+        }
+      });
+    </script>
   </body>
 </html>
