@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import { pipeline } from "stream";
 
 // Setup basic constants
 const app = express();
@@ -36,7 +37,7 @@ app.use(async (req, res) => {
   console.log(`➡️ Target URL: ${targetURL}`);
 
   try {
-    const headersObject = Object.fromEntries(req.headers);
+    const headersObject = req.headers;
     console.log("🧾 Request Headers:", headersObject);
 
     const fetchOptions = {
@@ -82,7 +83,12 @@ app.use(async (req, res) => {
     } else {
       console.log("🔁 Non-HTML response, streaming directly...");
       res.status(response.status);
-      response.body.pipe(res);
+      pipeline(response.body, res, (err) => {
+        if (err) {
+          console.error("❌ Stream pipeline error:", err);
+          res.status(500).send("Stream error");
+        }
+      });
     }
 
     const duration = Date.now() - start;
