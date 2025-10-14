@@ -70,6 +70,9 @@ app.use(async (req, res) => {
     const contentType = response.headers.get("content-type") || "";
     console.log("🧩 Detected content type:", contentType);
 
+    // Set the response status
+    res.status(response.status);
+
     // Handle HTML response separately
     if (contentType.includes("text/html")) {
       let html = await response.text();
@@ -79,16 +82,18 @@ app.use(async (req, res) => {
       html = html.replace(/www\.afsacademy\.co\.in/g, req.hostname);
 
       console.log("✅ Replacement complete. Sending modified HTML.");
-      res.status(response.status).send(html);
-    } else {
+      res.send(html);
+    } else if (response.body) {
       console.log("🔁 Non-HTML response, streaming directly...");
-      res.status(response.status);
       pipeline(response.body, res, (err) => {
         if (err) {
           console.error("❌ Stream pipeline error:", err);
           res.status(500).send("Stream error");
         }
       });
+    } else {
+      console.log("⚠️ No response body, ending response.");
+      res.end();
     }
 
     const duration = Date.now() - start;
