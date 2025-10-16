@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -8,6 +10,24 @@ function Home() {
   const handleScrollDown = () => {
     featuredSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const slides = [
+    { src: "/media/basketball.mp4", poster: "/media/coaches_cover.jpg" },
+    { src: "/media/basketballssss_2.mp4", poster: "/media/coaches_cover.jpg" },
+    { src: "/media/basketballssss_p3.mp4", poster: "/media/coaches_cover.jpg" },
+    { src: "/media/basketballssss.mp4", poster: "/media/coaches_cover.jpg" },
+  ];
+
 
   return (
     <>
@@ -212,7 +232,81 @@ function Home() {
       {/* START: Featured Training Sessions Section     */}
       {/* A video carousel showcasing different training activities. */}
       {/* ============================================= */}
-  <section ref={featuredSectionRef} className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50">
+      <section ref={featuredSectionRef} className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50">
+        <div className="absolute inset-0 bg-gradient-to-r from-afs-dark/70 to-afs-dark/70 z-0"></div>
+        <div className="basketball-pattern absolute inset-0 opacity-15 z-0"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-10 reveal animated animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-russo mb-3">
+              <span className="text-white">Featured</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red">
+                Training Sessions
+              </span>
+            </h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Get a glimpse of our exciting training sessions across Taekwondo,
+              Skating, Gymnastics, Badminton, and Zumba.
+            </p>
+          </div>
+
+          {/* Embla Carousel */}
+          <div className="relative group">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {slides.map((slide, index) => (
+                  <div
+                    key={index}
+                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
+                  >
+                    <div className="p-[2px] rounded-xl animated bg-afs-orange">
+                      <div className="rounded-lg overflow-hidden w-full h-full relative">
+                        <video
+                          src={slide.src}
+                          poster={slide.poster}
+                          className="w-full h-full object-cover aspect-video"
+                          loop
+                          playsInline
+                          muted
+                          autoPlay={index === 0}
+                        ></video>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Prev Button */}
+            <button
+              onClick={scrollPrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white hover:from-afs-orange hover:to-afs-red transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-afs-orange/40 flex items-center justify-center group-hover:opacity-100 opacity-0 md:opacity-100 hover:scale-110 transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white border-2 border-white/20"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                className="lucide lucide-arrow-left h-4 w-4">
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={scrollNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white hover:from-afs-orange hover:to-afs-red transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-afs-orange/40 flex items-center justify-center group-hover:opacity-100 opacity-0 md:opacity-100 hover:scale-110 transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white border-2 border-white/20"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                className="lucide lucide-arrow-right h-4 w-4">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
         {/* Background overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-afs-dark/70 to-afs-dark/70 z-0 dark:from-black/70 dark:to-black/70"></div>
         <div className="basketball-pattern absolute inset-0 opacity-15 z-0"></div>
@@ -414,7 +508,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+
       {/* ============================================= */}
       {/* END: Featured Training Sessions Section       */}
       {/* ============================================= */}
