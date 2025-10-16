@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 function Home() {
+  const featuredSectionRef = useRef(null);
+
+  const handleScrollDown = () => {
+    featuredSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       {/* ============================================= */}
@@ -17,6 +24,7 @@ function Home() {
           autoPlay={true}
           loop={true}
           playsInline={true}
+          muted={true}
           className="video-bg"
           poster="/images/basketball-poster.jpg"
         >
@@ -69,7 +77,7 @@ function Home() {
 
           {/* Call-to-Action Buttons */}
           <div className="space-x-4 flex flex-wrap justify-center gap-4">
-            <a className="btn-primary flex items-center" href="/programs">
+            <Link className="btn-primary flex items-center" to="/programs">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -86,8 +94,8 @@ function Home() {
                 <circle cx="12" cy="12" r="1"></circle>
               </svg>
               Explore Programs
-            </a>
-            <a className="btn-secondary flex items-center" href="/coaches">
+            </Link>
+            <Link className="btn-secondary flex items-center" to="/coaches">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -104,7 +112,7 @@ function Home() {
                 <circle cx="12" cy="12" r="1"></circle>
               </svg>
               Meet Our Coaches
-            </a>
+            </Link>
           </div>
 
           {/* Quick Statistics Cards */}
@@ -175,6 +183,7 @@ function Home() {
 
         {/* Animated Scroll Down Arrow */}
         <button
+          onClick={handleScrollDown}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-slow z-10"
           aria-label="Scroll down"
         >
@@ -203,7 +212,7 @@ function Home() {
       {/* START: Featured Training Sessions Section     */}
       {/* A video carousel showcasing different training activities. */}
       {/* ============================================= */}
-      <section className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50">
+  <section ref={featuredSectionRef} className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50">
         {/* Background overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-afs-dark/70 to-afs-dark/70 z-0 dark:from-black/70 dark:to-black/70"></div>
         <div className="basketball-pattern absolute inset-0 opacity-15 z-0"></div>
