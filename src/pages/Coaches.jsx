@@ -1,317 +1,172 @@
-import React from 'react'
+import React, { useState } from "react";
+
+// Data for all coaches is stored in this array.
+// This makes it easy to add, remove, or update coach information without touching the JSX.
+const coachesData = [
+  {
+    name: "Ashwani Kumar Gupta",
+    title: "Head Coach",
+    imageUrl: "/media/coach_photo.jpg",
+  },
+  {
+    name: "Abhishek Singh Bohra",
+    title: "Skills Development Coach",
+    imageUrl: "/media/abhishek_bohra.jpg",
+  },
+  {
+    name: "Abhishek Gupta",
+    title: "Youth Development Coach",
+    imageUrl: "/media/abhishek_gupta.jpg",
+  },
+  {
+    name: "Adnan Khan",
+    title: "Strength & Conditioning",
+    imageUrl: "/media/adnan.jpg",
+  },
+  {
+    name: "Amit Chaudhary",
+    title: "Defense Specialist",
+    imageUrl: "/media/amit_chaud.jpg",
+  },
+  {
+    name: "Devesh",
+    title: "Coach",
+    imageUrl: "/media/devesh.jpg",
+  },
+  {
+    name: "Shashwat",
+    title: "Coach",
+    imageUrl: "/media/shashwat.jpg",
+  },
+  {
+    name: "Aditya Raj",
+    title: "Coach",
+    imageUrl: "/media/aditya.jpg",
+  },
+  {
+    name: "Uttam Tewari",
+    title: "Coach",
+    imageUrl: "/media/uttam.jpg",
+  },
+  {
+    name: "Shubham Singh",
+    title: "Coach",
+    imageUrl: "/media/no-image.jpg",
+  },
+  {
+    name: "Praveen",
+    title: "Coach",
+    imageUrl: "/media/no-image.jpg",
+  },
+  {
+    name: "Vikas Pal",
+    title: "Coach",
+    imageUrl: "/media/no-image.jpg",
+  },
+  {
+    name: "Yash Thapa",
+    title: "Coach",
+    imageUrl: "/media/no-image.jpg",
+  },
+  {
+    name: "Vivek Yadav",
+    title: "Coach",
+    imageUrl: "/media/no-image.jpg",
+  },
+];
 
 function Coaches() {
+  // State to manage whether all coaches are shown or just a limited number.
+  const [showAll, setShowAll] = useState(false);
+  
+  // Determine which coaches to display based on the 'showAll' state.
+  const displayedCoaches = showAll ? coachesData : coachesData.slice(0, 6); // Show first 6 by default
+
   return (
-    <>
-        <section className="py-20 bg-afs-dark basketball-pattern">
-          <div className="container mx-auto px-4">
-            {/* Section Header */}
-            <div className="text-center max-w-2xl mx-auto mb-12 reveal animated">
-              <div className="flex items-center justify-center mb-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-user text-afs-orange mr-2"
-                >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
+    <div className="pt-24 pb-20">
+      <div className="container mx-auto px-4">
+        {/* Page Header */}
+        <div className="text-center mb-16 reveal animated">
+          <span className="inline-block py-1 px-3 rounded-full text-xs uppercase tracking-wider mb-3 bg-afs-orange/20 text-afs-orange border border-afs-orange/10">
+            Our Team
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 afs-heading">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red">
+              Expert
+            </span>{" "}
+            Coaches
+          </h1>
+          <p className="text-white/70 max-w-2xl mx-auto">
+            Our coaching staff brings professional experience, passion, and
+            proven methods to help every player reach their full potential.
+          </p>
+        </div>
+
+        {/* Grid of Coach Profiles */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 mb-10">
+          {/* We map over the `displayedCoaches` array to render each coach card dynamically. */}
+          {displayedCoaches.map((coach, index) => (
+            <div
+              key={index} // A unique key is required for each item in a list.
+              className="card-hover glass-card overflow-hidden rounded-xl animate-fade-in relative cursor-pointer reveal animated"
+            >
+              <div className="aspect-[3/4] relative overflow-hidden">
+                <img
+                  src={coach.imageUrl}
+                  alt={coach.name}
+                  className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-afs-dark/90 via-transparent to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="text-2xl font-bold">{coach.name}</h3>
+                  <p className="text-afs-orange">{coach.title}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* "View More / View Less" Button */}
+        {coachesData.length > 6 && ( // Only show the button if there are more coaches than the initial display count.
+          <div className="flex justify-center mb-16 reveal animated">
+            <button 
+              onClick={() => setShowAll(!showAll)} // Toggle the 'showAll' state on click.
+              className="btn-secondary flex items-center gap-2 transition-all duration-300"
+            >
+              {showAll ? "View Less" : "View More"}
+              {showAll ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-up">
+                  <path d="m18 15-6-6-6 6"></path>
                 </svg>
-                <span className="inline-block py-1 px-3 rounded-full text-xs uppercase tracking-wider font-bold bg-afs-orange/20 text-afs-orange border border-afs-orange/10">
-                  Our Team
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-russo mb-6">
-                <span className="text-white">Expert Coaches</span> Leading The
-                Way
-              </h2>
-              <p className="text-white/80">
-                Our coaching staff consists of former professional players and
-                certified trainers.
-              </p>
-            </div>
-            
-            {/* Grid of Coach Profiles */}
-            <div className="grid md:grid-cols-3 gap-8">
-              
-              {/* Coach 1: Ashwani Kumar Gupta */}
-              <div className="reveal animated">
-                <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
-                  <div className="aspect-[1/1] w-full">
-                    <img
-                      src="/media/coach_photo.jpg"
-                      alt="Ashwani Kumar Gupta"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-russo mb-1">
-                      Ashwani Kumar Gupta
-                    </h3>
-                    <p className="text-afs-orange mb-3 font-montserrat">
-                      Head Coach
-                    </p>
-                    <p className="text-white/70 text-sm mb-4 flex-grow font-montserrat">
-                      A Senior National Player and certified fitness expert with
-                      extensive experience in sports and coaching. Passionate
-                      about training and mentoring athletes across multiple
-                      disciplines.
-                    </p>
-                    <div>
-                      <h4 className="text-sm font-medium mb-2 flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-trophy text-afs-orange mr-2"
-                        >
-                          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                          <path d="M4 22h16"></path>
-                          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                        </svg>
-                        <span className="font-russo">Key Achievements</span>
-                      </h4>
-                      <ul className="space-y-1 mb-4">
-                        <li className="flex items-start text-xs font-montserrat">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                          >
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                            <circle cx="12" cy="8" r="6"></circle>
-                          </svg>
-                          <span className="text-white/80">
-                            Senior National Player
-                          </span>
-                        </li>
-                        <li className="flex items-start text-xs font-montserrat">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                          >
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                            <circle cx="12" cy="8" r="6"></circle>
-                          </svg>
-                          <span className="text-white/80">
-                            All India University, Khelo India Games Participant
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Coach 2: Abhishek Singh Bohra */}
-              <div className="reveal animated">
-                <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
-                  <div className="aspect-[1/1] w-full">
-                    <img
-                      src="/media/abhishek_bohra.jpg"
-                      alt="Abhishek Singh Bohra"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-russo mb-1">
-                      Abhishek Singh Bohra
-                    </h3>
-                    <p className="text-afs-orange mb-3 font-montserrat">
-                      Senior Coach
-                    </p>
-                    <p className="text-white/70 text-sm mb-4 flex-grow font-montserrat">
-                      National Medalist Multi-Sports Player &amp; Skilled Coach
-                      at Peace Sports Academy, dedicated to nurturing the next
-                      generation of champions.
-                    </p>
-                    <div>
-                      <h4 className="text-sm font-medium mb-2 flex items-center">
-                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-trophy text-afs-orange mr-2"
-                        >
-                          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                          <path d="M4 22h16"></path>
-                          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                        </svg>
-                        <span className="font-russo">Key Achievements</span>
-                      </h4>
-                      <ul className="space-y-1 mb-4">
-                        <li className="flex items-start text-xs font-montserrat">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                          >
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                            <circle cx="12" cy="8" r="6"></circle>
-                          </svg>
-                          <span className="text-white/80">
-                            National Medalist Player
-                          </span>
-                        </li>
-                        <li className="flex items-start text-xs font-montserrat">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                          >
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                            <circle cx="12" cy="8" r="6"></circle>
-                          </svg>
-                          <span className="text-white/80">B.P.Ed, M.P.Ed</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Coach 3: Abhishek Gupta */}
-              <div className="reveal animated">
-                <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
-                  <div className="aspect-[1/1] w-full">
-                    <img
-                      src="/media/abhishek_gupta.jpg"
-                      alt="Abhishek Gupta"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-russo mb-1">Abhishek Gupta</h3>
-                    <p className="text-afs-orange mb-3 font-montserrat">
-                      Head Coach
-                    </p>
-                    <p className="text-white/70 text-sm mb-4 flex-grow font-montserrat">
-                      Certified strength and conditioning specialist who focuses
-                      on Multi-Sports-specific athletic development.
-                    </p>
-                    <div>
-                      <h4 className="text-sm font-medium mb-2 flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-trophy text-afs-orange mr-2"
-                        >
-                          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                          <path d="M4 22h16"></path>
-                          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                        </svg>
-                        <span className="font-russo">Key Achievements</span>
-                      </h4>
-                      <ul className="space-y-1 mb-4">
-                        <li className="flex items-start text-xs font-montserrat">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                          >
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                            <circle cx="12" cy="8" r="6"></circle>
-                          </svg>
-                          <span className="text-white/80">National Player</span>
-                        </li>
-                        <li className="flex items-start text-xs font-montserrat">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                          >
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                            <circle cx="12" cy="8" r="6"></circle>
-                          </svg>
-                          <span className="text-white/80">B.P.Ed, M.P.Ed</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              )}
+            </button>
           </div>
-        </section>
-    </>
-  )
+        )}
+
+        {/* Call to Action: Join Our Team */}
+        <div className="max-w-3xl mx-auto text-center reveal animated">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+            <h3 className="text-2xl font-bold mb-4">
+              Join Our Coaching Team
+            </h3>
+            <p className="text-white/70 mb-6">
+              AFS Academy is always looking for experienced coaches with a
+              passion for developing young basketball talent. If you have a
+              background in basketball and a desire to help players improve, we'd
+              love to hear from you.
+            </p>
+            <a className="btn-primary" href="/contact">
+              Apply to Coach
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Coaches
+export default Coaches;
