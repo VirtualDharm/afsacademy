@@ -1,12 +1,23 @@
 import "./App.css";
 
+// This is the main component for the application's homepage.
+// It serves as the primary layout container for all other sections like
+// navigation, hero, about, programs, contact, and footer.
 function App() {
   return (
     <>
+      {/* Root container for the entire page, setting global styles like background, text color, and font. */}
       <div className="min-h-screen bg-afs-dark text-white overflow-x-hidden font-montserrat">
+        
+        {/* ============================================= */}
+        {/* START: Navigation Bar Section                 */}
+        {/* A fixed navigation bar that stays at the top of the page. */}
+        {/* ============================================= */}
         <nav className="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center">
+              
+              {/* Logo and Brand Name */}
               <a className="flex items-center space-x-2" href="/">
                 <img
                   src="/media/AFS Logo.png"
@@ -18,6 +29,8 @@ function App() {
                   PSA
                 </span>
               </a>
+
+              {/* Desktop Navigation Links - Hidden on smaller screens */}
               <div className="hidden md:flex space-x-8">
                 <a
                   className="text-white hover:text-afs-orange transition-colors nav-link-hover font-montserrat font-semibold"
@@ -44,11 +57,15 @@ function App() {
                   Achievements
                 </a>
               </div>
+
+              {/* Desktop Contact Button - Hidden on smaller screens */}
               <div className="hidden md:flex items-center gap-4">
                 <a className="btn-primary" href="/contact">
                   Contact
                 </a>
               </div>
+
+              {/* Mobile Menu Toggle Button (Hamburger Icon) - Only visible on smaller screens */}
               <button className="md:hidden text-white" aria-label="Toggle menu">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +85,8 @@ function App() {
                 </svg>
               </button>
             </div>
+
+            {/* Mobile Menu - Hidden by default, shown on button click. Only for smaller screens. */}
             <div className="md:hidden fixed left-0 right-0 top-[56px] p-4 mt-2 bg-afs-dark/95 backdrop-blur-lg shadow-lg transition-transform duration-300 ease-in-out dark:bg-black/90 translate-y-[-100%] opacity-0 pointer-events-none">
               <div className="flex flex-col space-y-4">
                 <a
@@ -101,8 +120,20 @@ function App() {
             </div>
           </div>
         </nav>
+        {/* ============================================= */}
+        {/* END: Navigation Bar Section                   */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: Hero Section                           */}
+        {/* The main header with a background video, headline, and primary call-to-action buttons. */}
+        {/* ============================================= */}
         <div className="video-container">
+          {/* Decorative pattern overlay */}
           <div className="absolute inset-0 basketball-pattern z-[1] opacity-30"></div>
+          
+          {/* Background Video */}
           <video
             autoPlay={true}
             loop={true}
@@ -113,8 +144,14 @@ function App() {
             <source src="/videos/basketball-hero.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+
+          {/* Dark overlay to ensure text is readable over the video */}
           <div className="video-overlay"></div>
+          
+          {/* Hero Section Content */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-white text-center">
+            
+            {/* Sub-heading */}
             <span className="inline-flex items-center text-sm uppercase tracking-widest mb-4 font-montserrat font-bold">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -133,6 +170,8 @@ function App() {
               </svg>
               Welcome to
             </span>
+            
+            {/* Main Heading */}
             <h1 className="afs-heading mb-6">
               <div className="flex items-center justify-center">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red p-3">
@@ -141,12 +180,16 @@ function App() {
                 <span className="mx-2"> Multi-Sports Academy</span>
               </div>
             </h1>
+            
+            {/* Tagline/Description */}
             <p className="max-w-3xl mb-8 text-lg font-montserrat">
               Biggest Multi-Sports Club in Lucknow.
               <br />
               Elevate your game with professional Multi-Sports training designed
               to unlock your full potential on the court.
             </p>
+            
+            {/* Call-to-Action Buttons */}
             <div className="space-x-4 flex flex-wrap justify-center gap-4">
               <a className="btn-primary flex items-center" href="/programs">
                 <svg
@@ -185,6 +228,8 @@ function App() {
                 Meet Our Coaches
               </a>
             </div>
+            
+            {/* Quick Statistics Cards */}
             <div className="flex flex-wrap justify-center gap-6 mt-12 w-full max-w-4xl">
               <div className="glass-card py-3 px-6 rounded-lg flex items-center">
                 <svg
@@ -249,6 +294,8 @@ function App() {
               </div>
             </div>
           </div>
+
+          {/* Animated Scroll Down Arrow */}
           <button
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-slow z-10"
             aria-label="Scroll down"
@@ -270,10 +317,22 @@ function App() {
             </svg>
           </button>
         </div>
+        {/* ============================================= */}
+        {/* END: Hero Section                             */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: Featured Training Sessions Section     */}
+        {/* A video carousel showcasing different training activities. */}
+        {/* ============================================= */}
         <section className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50">
+          {/* Background overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-afs-dark/70 to-afs-dark/70 z-0 dark:from-black/70 dark:to-black/70"></div>
           <div className="basketball-pattern absolute inset-0 opacity-15 z-0"></div>
+          
           <div className="container mx-auto px-4 relative z-10">
+            {/* Section Header */}
             <div className="text-center mb-10 reveal animated animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-russo mb-3">
                 <span className="text-white">Featured</span>
@@ -286,6 +345,8 @@ function App() {
                 Taekwondo, Skating, Gymnastics, Badminton, and Zumba.
               </p>
             </div>
+            
+            {/* Video Carousel */}
             <div className="relative group">
               <div
                 className="relative w-full"
@@ -297,6 +358,7 @@ function App() {
                     className="flex ml-0"
                     style={{ transform: "translate3d(220px, 0px, 0px)" }}
                   >
+                    {/* Carousel Slide 1 */}
                     <div
                       role="group"
                       aria-roledescription="slide"
@@ -324,6 +386,8 @@ function App() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Carousel Slide 2 */}
                     <div
                       role="group"
                       aria-roledescription="slide"
@@ -370,8 +434,8 @@ function App() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                             <div className="absolute bottom-0 left-0 w-full p-4 text-left">
                               <h3 className="text-white font-russo text-lg"></h3>
-                            </div>
-                          </div>
+                  </div>
+                </div>
                         </div>
                       </div>
                     </div>
@@ -440,6 +504,8 @@ function App() {
                   <span className="sr-only">Next slide</span>
                 </button>
               </div>
+
+              {/* Carousel Pagination Dots */}
               <div className="w-full flex justify-center mt-6 md:mt-8 md:absolute md:bottom-4 left-0 right-0 mx-auto">
                 <div className="flex space-x-2 z-20 px-4 bg-afs-dark-accent/50 md:bg-transparent rounded-full py-2 md:py-0">
                   <button
@@ -463,9 +529,20 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Featured Training Sessions Section       */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: Key Statistics Section                 */}
+        {/* Displays key metrics and achievements of the academy. */}
+        {/* ============================================= */}
         <section className="py-16 bg-gradient-to-b from-afs-dark to-afs-darkgray basketball-pattern">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+              
+              {/* Stat Card: Players Trained */}
               <div className="text-center reveal animated glass-card py-6 rounded-xl">
                 <div className="flex justify-center mb-3">
                   <svg
@@ -491,6 +568,8 @@ function App() {
                 </div>
                 <div className="text-white/70">Players Trained</div>
               </div>
+
+              {/* Stat Card: Professional Coaches */}
               <div className="text-center reveal animated glass-card py-6 rounded-xl">
                 <div className="flex justify-center mb-3">
                   <svg
@@ -514,6 +593,8 @@ function App() {
                 </div>
                 <div className="text-white/70">Professional Coaches</div>
               </div>
+
+              {/* Stat Card: Success Rate */}
               <div className="text-center reveal animated glass-card py-6 rounded-xl">
                 <div className="flex justify-center mb-3">
                   <svg
@@ -537,6 +618,8 @@ function App() {
                 </div>
                 <div className="text-white/70">Success Rate</div>
               </div>
+
+              {/* Stat Card: Years Experience */}
               <div className="text-center reveal animated glass-card py-6 rounded-xl">
                 <div className="flex justify-center mb-3">
                   <svg
@@ -567,9 +650,20 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Key Statistics Section                   */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: About Us Section                       */}
+        {/* Provides a summary of the academy's mission and history, with an image. */}
+        {/* ============================================= */}
         <section className="py-20 bg-afs-dark-accent">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
+              
+              {/* Left Column: Text Content */}
               <div className="reveal animated">
                 <div className="flex items-center mb-3">
                   <svg
@@ -630,6 +724,8 @@ function App() {
                   </svg>
                 </a>
               </div>
+              
+              {/* Right Column: Image */}
               <div className="relative reveal animated">
                 <div className="rounded-xl animated overflow-hidden glass-card">
                   <img
@@ -638,6 +734,7 @@ function App() {
                     className="w-full h-full object-cover"
                   />
                 </div>
+                {/* Decorative element on the corner of the image */}
                 <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full flex items-center justify-center bg-afs-dark border-2 border-afs-orange">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -659,8 +756,19 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: About Us Section                         */}
+        {/* ============================================= */}
+        
+
+        {/* ============================================= */}
+        {/* START: Training Programs Section              */}
+        {/* Highlights the main training programs offered with cards. */}
+        {/* ============================================= */}
         <section className="py-20 bg-afs-dark">
           <div className="container mx-auto px-4">
+            
+            {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto mb-12 reveal animated">
               <div className="flex items-center justify-center mb-3">
                 <svg
@@ -691,7 +799,11 @@ function App() {
                 tailored to specific skill levels and goals.
               </p>
             </div>
+            
+            {/* Grid of Program Cards */}
             <div className="grid md:grid-cols-3 gap-6 mb-10">
+              
+              {/* Program Card 1: Taekwondo */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
                   <div className="aspect-[16/9] w-full">
@@ -747,6 +859,8 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Program Card 2: Skating */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
                   <div className="aspect-[16/9] w-full">
@@ -802,6 +916,8 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Program Card 3: Gymnastics */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
                   <div className="aspect-[16/9] w-full">
@@ -859,6 +975,8 @@ function App() {
                 </div>
               </div>
             </div>
+
+            {/* "View All" Button */}
             <div className="text-center reveal animated">
               <a
                 className="btn-secondary inline-flex items-center"
@@ -884,7 +1002,17 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Training Programs Section                */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: Call to Action (CTA) Section           */}
+        {/* A prominent section to encourage user enrollment. */}
+        {/* ============================================= */}
         <section className="relative py-24 bg-afs-dark-accent overflow-hidden">
+          {/* Background Image and Overlays */}
           <div className="absolute inset-0 z-0">
             <img
               src="/images/cta-bg.jpg"
@@ -894,6 +1022,8 @@ function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-afs-dark to-transparent"></div>
             <div className="absolute inset-0 basketball-pattern opacity-30"></div>
           </div>
+          
+          {/* CTA Content */}
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
               <div className="reveal animated">
@@ -951,8 +1081,17 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Call to Action (CTA) Section             */}
+        {/* ============================================= */}
+        
+        {/* ============================================= */}
+        {/* START: Coaches Section                        */}
+        {/* Introduces the key coaching staff.           */}
+        {/* ============================================= */}
         <section className="py-20 bg-afs-dark basketball-pattern">
           <div className="container mx-auto px-4">
+            {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto mb-12 reveal animated">
               <div className="flex items-center justify-center mb-3">
                 <svg
@@ -983,7 +1122,11 @@ function App() {
                 certified trainers.
               </p>
             </div>
+            
+            {/* Grid of Coach Profiles */}
             <div className="grid md:grid-cols-3 gap-8">
+              
+              {/* Coach 1: Ashwani Kumar Gupta */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
                   <div className="aspect-[1/1] w-full">
@@ -1075,6 +1218,8 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Coach 2: Abhishek Singh Bohra */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
                   <div className="aspect-[1/1] w-full">
@@ -1098,7 +1243,7 @@ function App() {
                     </p>
                     <div>
                       <h4 className="text-sm font-medium mb-2 flex items-center">
-                        <svg
+                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
                           height="16"
@@ -1163,6 +1308,8 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Coach 3: Abhishek Gupta */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
                   <div className="aspect-[1/1] w-full">
@@ -1249,8 +1396,17 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Coaches Section                          */}
+        {/* ============================================= */}
+
+        {/* ============================================= */}
+        {/* START: Testimonials Section                   */}
+        {/* Displays quotes from satisfied players or parents. */}
+        {/* ============================================= */}
         <section className="py-20 bg-gradient-to-b from-afs-dark-accent to-afs-dark">
           <div className="container mx-auto px-4">
+            {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto mb-12 reveal animated">
               <div className="flex items-center justify-center mb-3">
                 <svg
@@ -1280,9 +1436,12 @@ function App() {
                 training with Peace Sports Academy.
               </p>
             </div>
+            {/* Testimonial Card */}
             <div className="reveal animated">
               <div className="glass-card rounded-xl animated p-8">
                 <div className="flex flex-col md:flex-row gap-6 items-center">
+                  
+                  {/* Player's Photo */}
                   <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden flex-shrink-0 border-2 border-afs-orange">
                     <img
                       src="/media/navya.jpg"
@@ -1290,8 +1449,11 @@ function App() {
                       className="w-full h-full object-cover"
                     />
                   </div>
+                  
+                  {/* Testimonial Content */}
                   <div className="flex-grow">
                     <div className="mb-4 flex justify-center md:justify-start">
+                      {/* Pagination dots if there were multiple testimonials in a slider */}
                       <button className="h-5 w-5 mr-2 text-afs-orange">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -1346,9 +1508,20 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Testimonials Section                     */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: Contact Section                        */}
+        {/* Contains contact details and a contact form.   */}
+        {/* ============================================= */}
         <section className="py-20 bg-afs-dark-accent">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12">
+              
+              {/* Left Column: Contact Information */}
               <div className="reveal animated">
                 <div className="flex items-center mb-3">
                   <svg
@@ -1378,6 +1551,7 @@ function App() {
                   Fill out the form and we'll get back to you.
                 </p>
                 <div className="space-y-4 mb-6">
+                  {/* Location Info */}
                   <div className="flex items-start">
                     <div className="w-10 h-10 rounded-full bg-afs-orange/20 flex items-center justify-center mr-4 flex-shrink-0">
                       <svg
@@ -1409,6 +1583,7 @@ function App() {
                       </p>
                     </div>
                   </div>
+                  {/* Email Info */}
                   <div className="flex items-start">
                     <div className="w-10 h-10 rounded-full bg-afs-orange/20 flex items-center justify-center mr-4 flex-shrink-0">
                       <svg
@@ -1433,6 +1608,7 @@ function App() {
                       </p>
                     </div>
                   </div>
+                  {/* Phone Info */}
                   <div className="flex items-start">
                     <div className="w-10 h-10 rounded-full bg-afs-orange/20 flex items-center justify-center mr-4 flex-shrink-0">
                       <svg
@@ -1459,6 +1635,8 @@ function App() {
                   </div>
                 </div>
               </div>
+              
+              {/* Right Column: Contact Form */}
               <div className="reveal animated">
                 <div className="glass-card rounded-xl animated p-6 md:p-8">
                   <form className="space-y-5">
@@ -1526,6 +1704,7 @@ function App() {
                         placeholder="Tell us more about your inquiry"
                       ></textarea>
                     </div>
+                    {/* reCAPTCHA integration - often handled by a library */}
                     <div>
                       <div>
                         <div>
@@ -1588,9 +1767,22 @@ function App() {
             </div>
           </div>
         </section>
+        {/* ============================================= */}
+        {/* END: Contact Section                          */}
+        {/* ============================================= */}
+
+
+        {/* ============================================= */}
+        {/* START: Footer Section                         */}
+        {/* Contains contact info, quick links, and copyright notice. */}
+        {/* ============================================= */}
         <footer className="bg-afs-dark text-white pt-16 pb-8">
           <div className="container mx-auto px-4">
+            
+            {/* Footer main content grid */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+              
+              {/* Column 1: Academy Info and Social Media */}
               <div>
                 <a className="block mb-4" href="/">
                   <span className="text-2xl font-bold">
@@ -1611,7 +1803,7 @@ function App() {
                     rel="noopener noreferrer"
                     className="text-white/60 hover:text-afs-orange transition-colors"
                   >
-                    <svg
+                   <svg
                       className="w-6 h-6"
                       fill="currentColor"
                       viewBox="0 0 24 24"
@@ -1645,6 +1837,8 @@ function App() {
                   </a>
                 </div>
               </div>
+
+              {/* Column 2: Program Links */}
               <div>
                 <h5 className="font-bold mb-4">Programs</h5>
                 <ul className="space-y-2">
@@ -1690,6 +1884,8 @@ function App() {
                   </li>
                 </ul>
               </div>
+
+              {/* Column 3: About Us Links */}
               <div>
                 <h5 className="font-bold mb-4">About Us</h5>
                 <ul className="space-y-2">
@@ -1719,6 +1915,8 @@ function App() {
                   </li>
                 </ul>
               </div>
+
+              {/* Column 4: Contact Information */}
               <div>
                 <h5 className="font-bold mb-4">Contact Information</h5>
                 <ul className="space-y-2 text-white/70">
@@ -1743,6 +1941,8 @@ function App() {
                 </ul>
               </div>
             </div>
+            
+            {/* Footer Bottom: Copyright and Legal Links */}
             <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
               <p className="text-white/60 text-sm mb-4 md:mb-0">
                 © 2025 Peace Sports Academy. All rights reserved.
@@ -1770,7 +1970,12 @@ function App() {
             </div>
           </div>
         </footer>
+        {/* ============================================= */}
+        {/* END: Footer Section                           */}
+        {/* ============================================= */}
       </div>
+
+      {/* This container is often used by libraries like 'react-toastify' to display notifications (toasts). */}
       <div
         role="region"
         aria-label="Notifications (F8)"
