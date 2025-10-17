@@ -19,13 +19,13 @@ function Home() {
     {
       name: "Navya Singh",
       title: "National Player",
-      text: "AFS Academy's elite training refined my skills and discipline, helping me represent UP and earn a shot at the Indian U-17 national team!",
+      text: "Peace Sports Academy's elite training refined my skills and discipline, helping me represent UP and earn a shot at the Indian U-17 national team!",
       img: "/media/navya.jpg",
     },
     {
       name: "Shubham Singh",
       title: "National Player",
-      text: "Training with AFS Academy was the turning point in my career. Their elite coaching staff pushed me to levels I didn't think were possible.",
+      text: "Training with Peace Sports Academy was the turning point in my career. Their elite coaching staff pushed me to levels I didn't think were possible.",
       img: "/media/Shubham_singh.jpg",
     },
   ];
@@ -72,8 +72,10 @@ function Home() {
   return (
     <>
       {/* ============================================= */}
-      {/* START: Hero Section                           */}
-      {/* The main header with a background video, headline, and primary call-to-action buttons. */}
+      {/* --- Hero Section (TEXT CONTENT UPDATED) ---   */}
+      {/* Heading and tagline updated to "Peace Sports Academy". */}
+      {/* Button text is unchanged. */}
+      {/* The old statistics cards from the hero section have been removed as requested. */}
       {/* ============================================= */}
       <div className="video-container">
         {/* Decorative pattern overlay */}
@@ -121,18 +123,15 @@ function Home() {
           <h1 className="afs-heading mb-6">
             <div className="flex items-center justify-center">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red p-3">
-                AFS
+                Peace Sports
               </span>
-              <span className="mx-2"> Multi-Sports Academy</span>
+              <span className="mx-2"> Academy</span>
             </div>
           </h1>
-
-          {/* Tagline/Description */}
           <p className="max-w-3xl mb-8 text-lg font-montserrat">
             Biggest Multi-Sports Club in Lucknow.
             <br />
-            Elevate your game with professional Multi-Sports training designed
-            to unlock your full potential on the court.
+            One Academy, Endless Opportunities.
           </p>
 
           {/* Call-to-Action Buttons */}
@@ -195,7 +194,7 @@ function Home() {
               </svg>
               <span className="font-russo">4</span>
               <span className="ml-2 text-white/70 text-sm">Branches</span>
-            </div>
+        </div>
             <div className="glass-card py-3 px-6 rounded-lg flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +266,7 @@ function Home() {
       {/* ============================================= */}
       {/* END: Hero Section                             */}
       {/* ============================================= */}
-
+      
       {/* ============================================= */}
       {/* START: Featured Training Sessions Section     */}
       {/* A video carousel showcasing different training activities. */}
@@ -519,8 +518,8 @@ function Home() {
       {/* ============================================= */}
 
       {/* ============================================= */}
-      {/* START: About Us Section                       */}
-      {/* Provides a summary of the academy's mission and history, with an image. */}
+      {/* ---START: About Us Section (TEXT CONTENT UPDATED) --- */}
+      {/* Text replaced with "Peace Sports Academy" info. */}
       {/* ============================================= */}
       <section className="py-20 bg-afs-dark-accent">
         <div className="container mx-auto px-4">
@@ -548,67 +547,28 @@ function Home() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-russo mb-6">
-                <span className="text-white">Elevate Your Game</span> To New
-                Heights
+                <span className="text-white">Lucknow’s Largest</span> Multi-Sports Academy
               </h2>
               <p className="text-white/80 mb-6">
-                Founded in 2021, Peace Sports Academy is Lucknow’s largest
-                multi-sports academy offering professional training in
-                Taekwondo, Skating, Badminton, and Gymnastics. With certified
-                coaches, modern facilities, and personalized attention, we’ve
-                produced numerous state and national champions. Join us to build
-                confidence, boost fitness, and unlock your true potential.
+                At Peace Sports Academy, founded in 2021, we believe every child has the potential to become a champion — on the field, in the rink, and in life. Our academy offers world-class training in multiple sports, including Speed Skating, Taekwondo, Gymnastics, Football, Basketball, and Table Tennis.
               </p>
               <p className="text-white/80 mb-8">
-                We focus on developing the complete player - from technical
-                skills and Multi-Sports IQ to mental strength and physical
-                conditioning.
+                Our programs are designed to build discipline, fitness, teamwork, and confidence while ensuring that every student enjoys the learning journey. With experienced coaches and structured programs, we train beginners to reach competitive and professional levels.
               </p>
-              <a className="btn-primary flex items-center" href="/achievements">
+              <Link className="btn-primary flex items-center" to="/achievements">
                 Learn More About Us
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-chevron-right ml-1"
-                >
-                  <path d="m9 18 6-6-6-6"></path>
-                </svg>
-              </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right ml-1"><path d="m9 18 6-6-6-6"></path></svg>
+              </Link>
             </div>
 
             {/* Right Column: Image */}
             <div className="relative reveal animated">
               <div className="rounded-xl animated overflow-hidden glass-card">
-                <img
-                  src="media/elevate.jpg"
-                  alt="Peace Sports Academy Training"
-                  className="w-full h-full object-cover"
-                />
+                <img src="media/elevate.jpg" alt="Peace Sports Academy Training" className="w-full h-full object-cover" />
               </div>
               {/* Decorative element on the corner of the image */}
               <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full flex items-center justify-center bg-afs-dark border-2 border-afs-orange">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-circle-dot text-afs-orange animate-ball-bounce"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <circle cx="12" cy="12" r="1"></circle>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-dot text-afs-orange animate-ball-bounce"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="1"></circle></svg>
               </div>
             </div>
           </div>
@@ -619,8 +579,8 @@ function Home() {
       {/* ============================================= */}
 
       {/* ============================================= */}
-      {/* START: Training Programs Section              */}
-      {/* Highlights the main training programs offered with cards. */}
+      {/* --- START: Training Programs Preview (UPDATED) ---   */}
+      {/* Replaced Basketball levels with new sports. Highlights the unique aspects of each program. */}
       {/* ============================================= */}
       <section className="py-20 bg-afs-dark">
         <div className="container mx-auto px-4">
@@ -657,156 +617,55 @@ function Home() {
           </div>
 
           {/* Grid of Program Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
-            {/* Program Card 1: Taekwondo */}
-            <div className="reveal animated">
-              <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
-                <div className="aspect-[16/9] w-full">
-                  <img
-                    src="/media/junior.jpg"
-                    alt="Beginner Training Program"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-russo mb-2">Taekwondo</h3>
-                  <p className="text-white/70 mb-4 font-montserrat">
-                    Foundational Multi-Sports skills and fundamentals for young
-                    players just starting their Multi-Sports journey.
-                  </p>
-                  <div className="flex justify-between mb-4 font-montserrat">
-                    <div className="text-sm flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-star text-afs-orange mr-1"
-                      >
-                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-                      </svg>
-                      <span className="text-white">Taekwondo</span>
-                    </div>
-                    <div className="text-sm flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-clock text-afs-orange mr-1"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                      <span className="text-white">Ongoing batches</span>
-                    </div>
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {/* Program Card 1: Speed Skating */}
+          <div className="reveal animated">
+            <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
+              <div className="aspect-[16/9] w-full">
+                <img src="/media/junior.jpg" alt="Speed Skating Program" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-russo mb-2">Speed Skating</h3>
+                <p className="text-white/70 mb-4 font-montserrat">Focus Areas: Balance, posture, speed techniques, cornering, and race strategy.</p>
+                <div className="flex justify-between mb-4 font-montserrat">
+                  <div className="text-sm flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-star text-afs-orange mr-1"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><span className="text-white">Skating</span></div>
+                  <div className="text-sm flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock text-afs-orange mr-1"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span className="text-white">All Levels</span>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
 
-            {/* Program Card 2: Skating */}
-            <div className="reveal animated">
-              <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
-                <div className="aspect-[16/9] w-full">
-                  <img
-                    src="/media/sub-junior.jpg"
-                    alt="Intermediate Training Program"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-russo mb-2">Skating</h3>
-                  <p className="text-white/70 mb-4 font-montserrat">
-                    Develops core Multi-Sports skills - shooting technique,
-                    defensive stance, and team play fundamentals
-                  </p>
-                  <div className="flex justify-between mb-4 font-montserrat">
-                    <div className="text-sm flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-star text-afs-orange mr-1"
-                      >
-                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-                      </svg>
-                      <span className="text-white">Skating</span>
-                    </div>
-                    <div className="text-sm flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-clock text-afs-orange mr-1"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                      <span className="text-white">Regular sessions</span>
-                    </div>
+            {/* Program Card 2 */}
+          <div className="reveal animated">
+            <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
+              <div className="aspect-[16/9] w-full">
+                <img src="/media/sub-junior.jpg" alt="Taekwondo Program" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-russo mb-2">Taekwondo</h3>
+                <p className="text-white/70 mb-4 font-montserrat">Focus Areas: Kicking, sparring, Self-Defence, flexibility, and discipline.</p>
+                <div className="flex justify-between mb-4 font-montserrat">
+                  <div className="text-sm flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-star text-afs-orange mr-1"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><span className="text-white">Taekwondo</span></div>
+                  <div className="text-sm flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock text-afs-orange mr-1"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span className="text-white">Regular Sessions</span>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Program Card 3: Gymnastics */}
-            <div className="reveal animated">
-              <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
-                <div className="aspect-[16/9] w-full">
-                  <img
-                    src="/media/senior.jpg"
-                    alt="Advanced Training Program"
-                    className="w-full h-full object-cover"
-                  />
+          <div className="reveal animated">
+            <div className="glass-card rounded-xl animated overflow-hidden card-hover h-full">
+              <div className="aspect-[16/9] w-full">
+                <img src="/media/senior.jpg" alt="Gymnastics Program" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-russo mb-2">Gymnastics</h3>
+                <p className="text-white/70 mb-4 font-montserrat">Focus Areas: Strength, flexibility, coordination, and acrobatic movements.</p>
+                <div className="flex justify-between mb-4 font-montserrat">
+                  <div className="text-sm flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-star text-afs-orange mr-1"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><span className="text-white">Gymnastics</span></div>
+                  <div className="text-sm flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock text-afs-orange mr-1"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span className="text-white">Year-round Program</span></div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-russo mb-2">Gymnastics</h3>
-                  <p className="text-white/70 mb-4 font-montserrat">
-                    Comprehensive skill development program focusing on advanced
-                    techniques, strategies, competitive preparation for serious
-                    players
-                  </p>
-                  <div className="flex justify-between mb-4 font-montserrat">
-                    <div className="text-sm flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-star text-afs-orange mr-1"
-                      >
-                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-                      </svg>
-                      <span className="text-white">Gymnastics</span>
-                    </div>
                     <div className="text-sm flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -824,36 +683,10 @@ function Home() {
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
                       <span className="text-white">Year-round program</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
-
-          {/* "View All" Button */}
-          <div className="text-center reveal animated">
-            <a
-              className="btn-secondary inline-flex items-center"
-              href="/programs"
-            >
-              <span>View All Programs</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-arrow-right ml-2"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </a>
+            </div>
+                  </div>
           </div>
         </div>
       </section>
@@ -940,8 +773,8 @@ function Home() {
       {/* ============================================= */}
 
       {/* ============================================= */}
-      {/* START: Coaches Section                        */}
-      {/* Introduces the key coaching staff.           */}
+      {/* --- Coaches Preview Section (UPDATED) ---     */}
+      {/* Names and roles replaced with new coach info. */}
       {/* ============================================= */}
       <section className="py-20 bg-afs-dark basketball-pattern">
         <div className="container mx-auto px-4">
@@ -978,271 +811,22 @@ function Home() {
 
           {/* Grid of Coach Profiles */}
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Coach 1: Ashwani Kumar Gupta */}
             <div className="reveal animated">
               <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
-                <div className="aspect-[1/1] w-full">
-                  <img
-                    src="/media/coach_photo.jpg"
-                    alt="Ashwani Kumar Gupta"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-xl font-russo mb-1">
-                    Ashwani Kumar Gupta
-                  </h3>
-                  <p className="text-afs-orange mb-3 font-montserrat">
-                    Head Coach
-                  </p>
-                  <p className="text-white/70 text-sm mb-4 flex-grow font-montserrat">
-                    A Senior National Player and certified fitness expert with
-                    extensive experience in sports and coaching. Passionate
-                    about training and mentoring athletes across multiple
-                    disciplines.
-                  </p>
-                  <div>
-                    <h4 className="text-sm font-medium mb-2 flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-trophy text-afs-orange mr-2"
-                      >
-                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                        <path d="M4 22h16"></path>
-                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                      </svg>
-                      <span className="font-russo">Key Achievements</span>
-                    </h4>
-                    <ul className="space-y-1 mb-4">
-                      <li className="flex items-start text-xs font-montserrat">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                        >
-                          <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                          <circle cx="12" cy="8" r="6"></circle>
-                        </svg>
-                        <span className="text-white/80">
-                          Senior National Player
-                        </span>
-                      </li>
-                      <li className="flex items-start text-xs font-montserrat">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                        >
-                          <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                          <circle cx="12" cy="8" r="6"></circle>
-                        </svg>
-                        <span className="text-white/80">
-                          All India University, Khelo India Games Participant
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <div className="aspect-[1/1] w-full"><img src="/media/coach_photo.jpg" alt="Dharmendra Kumar" className="w-full h-full object-cover" /></div>
+                <div className="p-6 flex-grow flex flex-col"><h3 className="text-xl font-russo mb-1">Dharmendra Kumar</h3><p className="text-afs-orange mb-3 font-montserrat">Director & Taekwondo Coach</p></div>
               </div>
             </div>
-
-            {/* Coach 2: Abhishek Singh Bohra */}
             <div className="reveal animated">
               <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
-                <div className="aspect-[1/1] w-full">
-                  <img
-                    src="/media/abhishek_bohra.jpg"
-                    alt="Abhishek Singh Bohra"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-xl font-russo mb-1">
-                    Abhishek Singh Bohra
-                  </h3>
-                  <p className="text-afs-orange mb-3 font-montserrat">
-                    Senior Coach
-                  </p>
-                  <p className="text-white/70 text-sm mb-4 flex-grow font-montserrat">
-                    National Medalist Multi-Sports Player &amp; Skilled Coach at
-                    Peace Sports Academy, dedicated to nurturing the next
-                    generation of champions.
-                  </p>
-                  <div>
-                    <h4 className="text-sm font-medium mb-2 flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-trophy text-afs-orange mr-2"
-                      >
-                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                        <path d="M4 22h16"></path>
-                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                      </svg>
-                      <span className="font-russo">Key Achievements</span>
-                    </h4>
-                    <ul className="space-y-1 mb-4">
-                      <li className="flex items-start text-xs font-montserrat">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                        >
-                          <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                          <circle cx="12" cy="8" r="6"></circle>
-                        </svg>
-                        <span className="text-white/80">
-                          National Medalist Player
-                        </span>
-                      </li>
-                      <li className="flex items-start text-xs font-montserrat">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                        >
-                          <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                          <circle cx="12" cy="8" r="6"></circle>
-                        </svg>
-                        <span className="text-white/80">B.P.Ed, M.P.Ed</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <div className="aspect-[1/1] w-full"><img src="/media/abhishek_bohra.jpg" alt="Pratibha Gautam" className="w-full h-full object-cover" /></div>
+                <div className="p-6 flex-grow flex flex-col"><h3 className="text-xl font-russo mb-1">Pratibha Gautam</h3><p className="text-afs-orange mb-3 font-montserrat">Skating Coach</p></div>
               </div>
             </div>
-
-            {/* Coach 3: Abhishek Gupta */}
             <div className="reveal animated">
               <div className="glass-card rounded-xl animated overflow-hidden h-full flex flex-col card-hover">
-                <div className="aspect-[1/1] w-full">
-                  <img
-                    src="/media/abhishek_gupta.jpg"
-                    alt="Abhishek Gupta"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-xl font-russo mb-1">Abhishek Gupta</h3>
-                  <p className="text-afs-orange mb-3 font-montserrat">
-                    Head Coach
-                  </p>
-                  <p className="text-white/70 text-sm mb-4 flex-grow font-montserrat">
-                    Certified strength and conditioning specialist who focuses
-                    on Multi-Sports-specific athletic development.
-                  </p>
-                  <div>
-                    <h4 className="text-sm font-medium mb-2 flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-trophy text-afs-orange mr-2"
-                      >
-                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                        <path d="M4 22h16"></path>
-                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
-                      </svg>
-                      <span className="font-russo">Key Achievements</span>
-                    </h4>
-                    <ul className="space-y-1 mb-4">
-                      <li className="flex items-start text-xs font-montserrat">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                        >
-                          <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                          <circle cx="12" cy="8" r="6"></circle>
-                        </svg>
-                        <span className="text-white/80">National Player</span>
-                      </li>
-                      <li className="flex items-start text-xs font-montserrat">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-award text-afs-orange mr-1 flex-shrink-0"
-                        >
-                          <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                          <circle cx="12" cy="8" r="6"></circle>
-                        </svg>
-                        <span className="text-white/80">B.P.Ed, M.P.Ed</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <div className="aspect-[1/1] w-full"><img src="/media/abhishek_gupta.jpg" alt="Pradumn Singh Yadav" className="w-full h-full object-cover" /></div>
+                <div className="p-6 flex-grow flex flex-col"><h3 className="text-xl font-russo mb-1">Pradumn Singh Yadav</h3><p className="text-afs-orange mb-3 font-montserrat">Gymnastics Coach</p></div>
               </div>
             </div>
           </div>
@@ -1253,8 +837,8 @@ function Home() {
       {/* ============================================= */}
 
       {/* ============================================= */}
-      {/* START: Testimonials Section                   */}
-      {/* Displays quotes from satisfied players or parents. */}
+      {/* ---  START: Testimonials Section (TEXT UPDATED) ---   */}
+      {/* Testimonial text and name updated.    Displays quotes from satisfied players or parents. */}
       {/* ============================================= */}
       <section className="py-20 bg-gradient-to-b from-afs-dark-accent to-afs-dark">
         <div className="container mx-auto px-4">
@@ -1353,40 +937,19 @@ function Home() {
       {/* ============================================= */}
 
       {/* ============================================= */}
-      {/* START: Contact Section                        */}
-      {/* Contains contact details and a contact form.   */}
+      {/* --- Contact Preview Section (UPDATED) ---     */}
+      {/* Phone number and email have been updated.     */}
       {/* ============================================= */}
       <section className="py-20 bg-afs-dark-accent">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left Column: Contact Information */}
             <div className="reveal animated">
-              <div className="flex items-center mb-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-circle-dot text-afs-orange mr-2 animate-ball-bounce"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <circle cx="12" cy="12" r="1"></circle>
-                </svg>
-                <span className="inline-block py-1 px-3 rounded-full text-xs uppercase tracking-wider font-bold bg-afs-orange/20 text-afs-orange border border-afs-orange/10">
-                  Get In Touch
-                </span>
-              </div>
               <h2 className="text-3xl md:text-4xl font-russo mb-6">
                 <span className="text-white">Questions?</span> Contact Us
               </h2>
               <p className="text-white/80 mb-8">
-                Have questions about our programs or want to schedule a visit?
-                Fill out the form and we'll get back to you.
+                Have questions about our programs or want to schedule a visit? Fill out the form and we'll get back to you.
               </p>
               <div className="space-y-4 mb-6">
                 {/* Location Info */}
@@ -1414,11 +977,8 @@ function Home() {
                     </svg>
                   </div>
                   <div>
-                    <h5 className="font-russo mb-1">Location</h5>
-                    <p className="text-white/70 text-sm">
-                      Peace Sports Academy, Sector-6, Gomtinagar, Badhamau,
-                      Lucknow, UP
-                    </p>
+                    <h5 className="font-russo mb-1">Main Office</h5>
+                    <p className="text-white/70 text-sm">Peace Sports Academy, Gomti Nagar Extension Sec-6 Lucknow, Uttar Pradesh</p>
                   </div>
                 </div>
                 {/* Email Info */}
