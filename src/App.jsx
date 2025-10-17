@@ -10,6 +10,7 @@ import Programs from "./pages/Programs";
 import Coaches from "./pages/Coaches";
 import Achievements from "./pages/Achievements";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 // // NOTE: You will create all the imported files in the next steps.
 
 /**
@@ -56,7 +57,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
 
           {/* You can add a "Not Found" page later with a catch-all route like this: */}
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
