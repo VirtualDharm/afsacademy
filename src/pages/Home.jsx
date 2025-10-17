@@ -13,6 +13,25 @@ function Home() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
+  const [active, setActive] = useState(0);
+
+  const testimonials = [
+    {
+      name: "Navya Singh",
+      title: "National Player",
+      text: "AFS Academy's elite training refined my skills and discipline, helping me represent UP and earn a shot at the Indian U-17 national team!",
+      img: "/media/navya.jpg",
+    },
+    {
+      name: "Shubham Singh",
+      title: "National Player",
+      text: "Training with AFS Academy was the turning point in my career. Their elite coaching staff pushed me to levels I didn't think were possible.",
+      img: "/media/Shubham_singh.jpg",
+    },
+  ];
+
+  const testimonial = testimonials[active];
+
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
   const scrollTo = useCallback((index) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
@@ -253,7 +272,10 @@ function Home() {
       {/* START: Featured Training Sessions Section     */}
       {/* A video carousel showcasing different training activities. */}
       {/* ============================================= */}
-      <section ref={featuredSectionRef} className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50">
+      <section
+        ref={featuredSectionRef}
+        className="relative py-10 bg-afs-dark-accent overflow-hidden dark:bg-black/50"
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-afs-dark/70 to-afs-dark/70 z-0"></div>
         <div className="basketball-pattern absolute inset-0 opacity-15 z-0"></div>
 
@@ -276,13 +298,24 @@ function Home() {
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {slides.map((slide, index) => (
-                  <div className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2" key={index}>
+                  <div
+                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
+                    key={index}
+                  >
                     <div
                       className={`relative transition-all duration-500 ${
-                        index === selectedIndex ? "opacity-100 scale-100 z-20" : "opacity-70 scale-95 blur-[1px] z-10"
+                        index === selectedIndex
+                          ? "opacity-100 scale-100 z-20"
+                          : "opacity-70 scale-95 blur-[1px] z-10"
                       }`}
                     >
-                      <div className={`p-[2px] rounded-xl animated ${index === selectedIndex ? 'bg-afs-orange' : 'bg-transparent'}`}>
+                      <div
+                        className={`p-[2px] rounded-xl animated ${
+                          index === selectedIndex
+                            ? "bg-afs-orange"
+                            : "bg-transparent"
+                        }`}
+                      >
                         <div className="rounded-lg overflow-hidden w-full h-full">
                           <video
                             src={slide.src}
@@ -302,14 +335,44 @@ function Home() {
               </div>
             </div>
 
-            <button onClick={scrollPrev} className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 group-hover:opacity-100 opacity-0 md:opacity-100 border-2 border-white/20">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left h-4 w-4">
-                <path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path>
+            <button
+              onClick={scrollPrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 group-hover:opacity-100 opacity-0 md:opacity-100 border-2 border-white/20"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-left h-4 w-4"
+              >
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
               </svg>
             </button>
-            <button onClick={scrollNext} className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 group-hover:opacity-100 opacity-0 md:opacity-100 border-2 border-white/20">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right h-4 w-4">
-                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+            <button
+              onClick={scrollNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 group-hover:opacity-100 opacity-0 md:opacity-100 border-2 border-white/20"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right h-4 w-4"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
               </svg>
             </button>
 
@@ -320,7 +383,9 @@ function Home() {
                     key={index}
                     onClick={() => scrollTo(index)}
                     className={`h-2.5 rounded-full transition-all duration-300 ${
-                      index === selectedIndex ? 'w-8 bg-gradient-to-r from-afs-orange to-afs-red' : 'w-2.5 bg-white/40'
+                      index === selectedIndex
+                        ? "w-8 bg-gradient-to-r from-afs-orange to-afs-red"
+                        : "w-2.5 bg-white/40"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   ></button>
@@ -1225,13 +1290,13 @@ function Home() {
           </div>
           {/* Testimonial Card */}
           <div className="reveal animated">
-            <div className="glass-card rounded-xl animated p-8">
+            <div className="glass-card rounded-xl p-8 transition-all duration-500 ease-in-out">
               <div className="flex flex-col md:flex-row gap-6 items-center">
-                {/* Player's Photo */}
+                {/* Player Photo */}
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden flex-shrink-0 border-2 border-afs-orange">
                   <img
-                    src="/media/navya.jpg"
-                    alt="Navya Singh"
+                    src={testimonial.img}
+                    alt={testimonial.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -1239,53 +1304,42 @@ function Home() {
                 {/* Testimonial Content */}
                 <div className="flex-grow">
                   <div className="mb-4 flex justify-center md:justify-start">
-                    {/* Pagination dots if there were multiple testimonials in a slider */}
-                    <button className="h-5 w-5 mr-2 text-afs-orange">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-circle-dot"
+                    {testimonials.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActive(i)}
+                        className={`h-5 w-5 mr-2 transition-colors ${
+                          active === i ? "text-afs-orange" : "text-white/30"
+                        }`}
                       >
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <circle cx="12" cy="12" r="1"></circle>
-                      </svg>
-                    </button>
-                    <button className="h-5 w-5 mr-2 text-white/30">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-circle-dot"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <circle cx="12" cy="12" r="1"></circle>
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-circle-dot"
+                        >
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <circle cx="12" cy="12" r="1"></circle>
+                        </svg>
+                      </button>
+                    ))}
                   </div>
+
                   <p className="text-white/80 text-lg mb-4 font-montserrat">
-                    Peace Sports Academy's elite training refined my skills and
-                    discipline, helping me represent UP and earn a shot at the
-                    Indian U-17 national team!
+                    {testimonial.text}
                   </p>
                   <div>
                     <h4 className="font-russo text-center md:text-left">
-                      Navya Singh
+                      {testimonial.name}
                     </h4>
                     <p className="text-afs-orange text-sm font-montserrat text-center md:text-left">
-                      National Player
+                      {testimonial.title}
                     </p>
                   </div>
                 </div>
