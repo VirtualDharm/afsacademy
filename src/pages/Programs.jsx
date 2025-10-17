@@ -1,6 +1,10 @@
 import React from "react";
+import * as Tabs from "@radix-ui/react-tabs";
 
-function Programs() {
+/* ----------------------------------------------
+   Main Component
+---------------------------------------------- */
+export default function Programs() {
   return (
     <div className="pt-24 pb-20">
       <div className="container mx-auto px-4 sm:px-6">
@@ -22,127 +26,46 @@ function Programs() {
           </p>
         </div>
 
-        {/* Tab Navigation for Filtering Programs */}
-        <div
-          dir="ltr"
-          data-orientation="horizontal"
-          className="mb-8 sm:mb-12 reveal animated"
-        >
-          <div className="flex justify-center overflow-x-auto pb-2">
-            <div
-              role="tablist"
-              aria-orientation="horizontal"
-              className="inline-flex h-10 items-center justify-center rounded-md p-1 text-muted-foreground bg-white/5 border border-white/10 w-max"
-              tabIndex="0"
-              data-orientation="horizontal"
-              style={{ outline: "none" }}
-            >
-              <button
-                type="button"
-                role="tab"
-                aria-selected="true"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red text-xs sm:text-sm"
-                data-state="active"
-              >
-                All Programs
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected="false"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red text-xs sm:text-sm"
-              >
-                Beginner
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected="false"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red text-xs sm:text-sm"
-              >
-                Intermediate
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected="false"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red text-xs sm:text-sm"
-              >
-                Advanced
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected="false"
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red text-xs sm:text-sm"
-              >
-                Expert
-              </button>
-            </div>
-          </div>
-        </div>
+        {/* Tabs Root */}
+        <Tabs.Root defaultValue="all" orientation="horizontal" className="mb-12">
+          {/* Tabs List */}
+          <Tabs.List
+            role="tablist"
+            aria-orientation="horizontal"
+            className="flex h-10 items-center justify-center rounded-md p-1 bg-white/5 border border-white/10 w-max mx-auto text-muted-foreground"
+          >
+            {["all", "beginner", "intermediate", "advanced", "expert"].map(
+              (tab) => (
+                <Tabs.Trigger
+                  key={tab}
+                  value={tab}
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-xs sm:text-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+                >
+                  {tab === "all"
+                    ? "All Programs"
+                    : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </Tabs.Trigger>
+              )
+            )}
+          </Tabs.List>
 
-        {/* Tab Panel for "All Programs" */}
-        <div
-          data-state="active"
-          className="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 mt-6 sm:mt-8"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Beginner */}
-            <ProgramCard
-              img="/media/junior.jpg"
-              title="Beginner Training Program"
-              level="Beginner"
-              desc="Foundational basketball skills and fundamentals for young players just starting their basketball journey."
-              note="Ongoing batches"
-            />
-
-            {/* Intermediate */}
-            <ProgramCard
-              img="/media/sub-junior.jpg"
-              title="Intermediate Training Program"
-              level="Intermediate"
-              desc="Develops core basketball skills - shooting technique, defensive stance, and team play fundamentals."
-              note="Regular sessions"
-            />
-
-            {/* Advanced */}
-            <ProgramCard
-              img="/media/senior.jpg"
-              title="Advanced Training Program"
-              level="Advanced"
-              desc="Comprehensive skill development program focusing on advanced techniques, strategies, and competitive preparation for serious players."
-              note="Year-round program"
-            />
-
-            {/* Expert */}
-            <ProgramCard
-              img="/media/expert.jpg"
-              title="Professional Training Program"
-              level="Expert"
-              desc="For competitive players seeking highest-level coaching with advanced drills, game simulations, and athletic conditioning."
-              note="Regular sessions"
-            />
-
-            {/* Camp */}
-            <ProgramCard
-              img="/media/camp.jpg"
-              title="Summer Basketball Camp"
-              level="All Levels"
-              desc="Daily skill-building activities, drills, and scrimmages for all age groups during summer vacations."
-              note="June-July"
-            />
-
-            {/* Personal Coaching */}
-            <ProgramCard
-              img="/media/personal1.png"
-              title="Personal Coaching"
-              level="All Levels"
-              desc="One-on-one customized training sessions focusing on individual skill improvement."
-              note="Flexible scheduling"
-            />
-          </div>
-        </div>
+          {/* Tabs Content Panels */}
+          <Tabs.Content value="all">
+            <ProgramGrid filter="all" />
+          </Tabs.Content>
+          <Tabs.Content value="beginner">
+            <ProgramGrid filter="beginner" />
+          </Tabs.Content>
+          <Tabs.Content value="intermediate">
+            <ProgramGrid filter="intermediate" />
+          </Tabs.Content>
+          <Tabs.Content value="advanced">
+            <ProgramGrid filter="advanced" />
+          </Tabs.Content>
+          <Tabs.Content value="expert">
+            <ProgramGrid filter="expert" />
+          </Tabs.Content>
+        </Tabs.Root>
 
         {/* Call to Action */}
         <div className="mt-12 sm:mt-16 text-center reveal animated">
@@ -165,11 +88,78 @@ function Programs() {
   );
 }
 
-/* Helper Component for Program Cards */
+/* ----------------------------------------------
+   Helper: Program Grid
+---------------------------------------------- */
+function ProgramGrid({ filter }) {
+  const programs = [
+    {
+      img: "/media/junior.jpg",
+      title: "Beginner Training Program",
+      level: "Beginner",
+      desc: "Foundational basketball skills and fundamentals for young players just starting their basketball journey.",
+      note: "Ongoing batches",
+    },
+    {
+      img: "/media/sub-junior.jpg",
+      title: "Intermediate Training Program",
+      level: "Intermediate",
+      desc: "Develops core basketball skills - shooting technique, defensive stance, and team play fundamentals.",
+      note: "Regular sessions",
+    },
+    {
+      img: "/media/senior.jpg",
+      title: "Advanced Training Program",
+      level: "Advanced",
+      desc: "Comprehensive skill development program focusing on advanced techniques, strategies, and competitive preparation for serious players.",
+      note: "Year-round program",
+    },
+    {
+      img: "/media/expert.jpg",
+      title: "Professional Training Program",
+      level: "Expert",
+      desc: "For competitive players seeking highest-level coaching with advanced drills, game simulations, and athletic conditioning.",
+      note: "Regular sessions",
+    },
+    {
+      img: "/media/camp.jpg",
+      title: "Summer Basketball Camp",
+      level: "All Levels",
+      desc: "Daily skill-building activities, drills, and scrimmages for all age groups during summer vacations.",
+      note: "June-July",
+    },
+    {
+      img: "/media/personal1.png",
+      title: "Personal Coaching",
+      level: "All Levels",
+      desc: "One-on-one customized training sessions focusing on individual skill improvement.",
+      note: "Flexible scheduling",
+    },
+  ];
+
+  const visiblePrograms =
+    filter === "all"
+      ? programs
+      : programs.filter(
+          (p) => p.level.toLowerCase() === filter.toLowerCase()
+        );
+
+  return (
+    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {visiblePrograms.map((p) => (
+        <ProgramCard key={p.title} {...p} />
+      ))}
+    </div>
+  );
+}
+
+/* ----------------------------------------------
+   Helper: Program Card
+---------------------------------------------- */
 function ProgramCard({ img, title, level, desc, note }) {
   return (
     <div className="overflow-hidden rounded-xl relative group glass-card animate-fade-in h-full flex flex-col transition-all duration-300 hover:-translate-y-2">
-      <div className="aspect-[4/3] w-full overflow-hidden flex-shrink-0">
+      <div className="aspect-[4/3] w-full overflow-hidden flex-shrink-0 relative">
         <img
           src={img}
           alt={title}
@@ -204,8 +194,8 @@ function ProgramCard({ img, title, level, desc, note }) {
               strokeLinejoin="round"
               className="lucide lucide-arrow-right ml-1 sm:ml-2 transition-transform duration-300 group-hover/btn:translate-x-1"
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
             </svg>
           </a>
         </div>
@@ -213,5 +203,3 @@ function ProgramCard({ img, title, level, desc, note }) {
     </div>
   );
 }
-
-export default Programs;
