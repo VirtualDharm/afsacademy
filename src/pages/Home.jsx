@@ -1,25 +1,46 @@
-import React, { useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
 import { Link } from "react-router-dom";
 import "../App.css";
 
+// This component now contains all sections for the homepage.
 function Home() {
   const featuredSectionRef = useRef(null);
+
+  // --- Embla Carousel State and Logic ---
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+  // This effect runs when the carousel is initialized.
+  // It sets up listeners to update the active dot and slide styles.
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    onSelect(); // Set initial selected dot on load
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi]);
+  // --- End Carousel Logic ---
 
   const handleScrollDown = () => {
     featuredSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
 
   const slides = [
     { src: "/media/basketball.mp4", poster: "/media/coaches_cover.jpg" },
@@ -255,22 +276,25 @@ function Home() {
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {slides.map((slide, index) => (
-                  <div
-                    key={index}
-                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
-                  >
-                    <div className="p-[2px] rounded-xl animated bg-afs-orange">
-                      <div className="rounded-lg overflow-hidden w-full h-full relative">
-                        <video
-                          src={slide.src}
-                          poster={slide.poster}
-                          className="w-full h-full object-cover aspect-video"
-                          loop
-                          playsInline
-                          muted
-                          autoPlay={index === 0}
-                        ></video>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  <div className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2" key={index}>
+                    <div
+                      className={`relative transition-all duration-500 ${
+                        index === selectedIndex ? "opacity-100 scale-100 z-20" : "opacity-70 scale-95 blur-[1px] z-10"
+                      }`}
+                    >
+                      <div className={`p-[2px] rounded-xl animated ${index === selectedIndex ? 'bg-afs-orange' : 'bg-transparent'}`}>
+                        <div className="rounded-lg overflow-hidden w-full h-full">
+                          <video
+                            src={slide.src}
+                            poster={slide.poster}
+                            className="w-full h-full object-cover aspect-video"
+                            loop
+                            playsInline
+                            muted
+                            autoPlay={index === selectedIndex}
+                          ></video>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -278,237 +302,34 @@ function Home() {
               </div>
             </div>
 
-            {/* Prev Button */}
-            <button
-              onClick={scrollPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white hover:from-afs-orange hover:to-afs-red transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-afs-orange/40 flex items-center justify-center group-hover:opacity-100 opacity-0 md:opacity-100 hover:scale-110 transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white border-2 border-white/20"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                className="lucide lucide-arrow-left h-4 w-4">
-                <path d="m12 19-7-7 7-7"></path>
-                <path d="M19 12H5"></path>
+            <button onClick={scrollPrev} className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 group-hover:opacity-100 opacity-0 md:opacity-100 border-2 border-white/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-left h-4 w-4">
+                <path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path>
+              </svg>
+            </button>
+            <button onClick={scrollNext} className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 group-hover:opacity-100 opacity-0 md:opacity-100 border-2 border-white/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right h-4 w-4">
+                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
               </svg>
             </button>
 
-            {/* Next Button */}
-            <button
-              onClick={scrollNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white hover:from-afs-orange hover:to-afs-red transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-afs-orange/40 flex items-center justify-center group-hover:opacity-100 opacity-0 md:opacity-100 hover:scale-110 transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white border-2 border-white/20"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                className="lucide lucide-arrow-right h-4 w-4">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </button>
+            <div className="w-full flex justify-center mt-6 md:mt-8 md:absolute md:bottom-4 left-0 right-0 mx-auto">
+              <div className="flex space-x-2 z-20 px-4 bg-afs-dark-accent/50 md:bg-transparent rounded-full py-2 md:py-0">
+                {scrollSnaps.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollTo(index)}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      index === selectedIndex ? 'w-8 bg-gradient-to-r from-afs-orange to-afs-red' : 'w-2.5 bg-white/40'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  ></button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-        {/* Background overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-afs-dark/70 to-afs-dark/70 z-0 dark:from-black/70 dark:to-black/70"></div>
-        <div className="basketball-pattern absolute inset-0 opacity-15 z-0"></div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-10 reveal animated animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-russo mb-3">
-              <span className="text-white">Featured</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red">
-                Training Sessions
-              </span>
-            </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Get a glimpse of our exciting training sessions across Taekwondo,
-              Skating, Gymnastics, Badminton, and Zumba.
-            </p>
-          </div>
-
-          {/* Video Carousel */}
-          <div className="relative group">
-            <div
-              className="relative w-full"
-              role="region"
-              aria-roledescription="carousel"
-            >
-              <div className="overflow-hidden">
-                <div
-                  className="flex ml-0"
-                  style={{ transform: "translate3d(220px, 0px, 0px)" }}
-                >
-                  {/* Carousel Slide 1 */}
-                  <div
-                    role="group"
-                    aria-roledescription="slide"
-                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
-                    style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                  >
-                    <div className="relative transition-all duration-500 opacity-100 scale-100 z-20">
-                      <div className="p-[2px] rounded-xl animated bg-afs-orange">
-                        <div className="rounded-lg overflow-hidden w-full h-full">
-                          <video
-                            src="/media/basketball.mp4"
-                            poster="/media/coaches_cover.jpg"
-                            className="w-full h-full object-cover aspect-video"
-                            loop={true}
-                            playsInline={true}
-                            preload="auto"
-                            autoPlay={true}
-                            data-video-index="0"
-                          ></video>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                          <div className="absolute bottom-0 left-0 w-full p-4 text-left">
-                            <h3 className="text-white font-russo text-lg"></h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Carousel Slide 2 */}
-                  <div
-                    role="group"
-                    aria-roledescription="slide"
-                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
-                    style={{ transform: "translate3d(0px, 0px, 0px)" }}
-                  >
-                    <div className="relative transition-all duration-500 opacity-70 scale-95 blur-[1px] z-10">
-                      <div className="p-[2px] rounded-xl animated bg-transparent">
-                        <div className="rounded-lg overflow-hidden w-full h-full">
-                          <video
-                            src="/media/basketballssss_2.mp4"
-                            poster="/media/coaches_cover.jpg"
-                            className="w-full h-full object-cover aspect-video"
-                            loop={true}
-                            playsInline={true}
-                            preload="auto"
-                            data-video-index="1"
-                          ></video>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                          <div className="absolute bottom-0 left-0 w-full p-4 text-left">
-                            <h3 className="text-white font-russo text-lg"></h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    role="group"
-                    aria-roledescription="slide"
-                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
-                  >
-                    <div className="relative transition-all duration-500 opacity-70 scale-95 blur-[1px] z-10">
-                      <div className="p-[2px] rounded-xl animated bg-transparent">
-                        <div className="rounded-lg overflow-hidden w-full h-full">
-                          <video
-                            src="/media/basketballssss_p3.mp4"
-                            poster="/media/coaches_cover.jpg"
-                            className="w-full h-full object-cover aspect-video"
-                            loop={true}
-                            playsInline={true}
-                            preload="auto"
-                            data-video-index="2"
-                          ></video>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                          <div className="absolute bottom-0 left-0 w-full p-4 text-left">
-                            <h3 className="text-white font-russo text-lg"></h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    role="group"
-                    aria-roledescription="slide"
-                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-2/3 px-1 md:px-2"
-                    style={{ transform: "translate3d(-3517px, 0px, 0px)" }}
-                  >
-                    <div className="relative transition-all duration-500 opacity-70 scale-95 blur-[1px] z-10">
-                      <div className="p-[2px] rounded-xl animated bg-transparent">
-                        <div className="rounded-lg overflow-hidden w-full h-full">
-                          <video
-                            src="/media/basketballssss.mp4"
-                            poster="/media/coaches_cover.jpg"
-                            className="w-full h-full object-cover aspect-video"
-                            loop={true}
-                            playsInline={true}
-                            preload="auto"
-                            data-video-index="3"
-                          ></video>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                          <div className="absolute bottom-0 left-0 w-full p-4 text-left">
-                            <h3 className="text-white font-russo text-lg"></h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button className="gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background hover:bg-accent hover:text-accent-foreground absolute left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white hover:from-afs-orange hover:to-afs-red transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-afs-orange/40 flex items-center justify-center group-hover:opacity-100 opacity-0 md:opacity-100 hover:scale-110 transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white border-2 border-white/20">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-arrow-left h-4 w-4"
-                >
-                  <path d="m12 19-7-7 7-7"></path>
-                  <path d="M19 12H5"></path>
-                </svg>
-                <span className="sr-only">Previous slide</span>
-              </button>
-              <button className="gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background hover:bg-accent hover:text-accent-foreground absolute right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-gradient-to-br from-afs-orange/90 to-afs-red/90 text-white hover:from-afs-orange hover:to-afs-red transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-afs-orange/40 flex items-center justify-center group-hover:opacity-100 opacity-0 md:opacity-100 hover:scale-110 transform-gpu focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white border-2 border-white/20">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-arrow-right h-4 w-4"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-                <span className="sr-only">Next slide</span>
-              </button>
-            </div>
-
-            {/* Carousel Pagination Dots */}
-            <div className="w-full flex justify-center mt-6 md:mt-8 md:absolute md:bottom-4 left-0 right-0 mx-auto">
-              <div className="flex space-x-2 z-20 px-4 bg-afs-dark-accent/50 md:bg-transparent rounded-full py-2 md:py-0">
-                <button
-                  className="h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-afs-orange w-8 bg-gradient-to-r from-afs-orange to-afs-red"
-                  aria-label="Go to slide 1"
-                ></button>
-                <button
-                  className="h-2.5 w-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-afs-orange bg-white/40"
-                  aria-label="Go to slide 2"
-                ></button>
-                <button
-                  className="h-2.5 w-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-afs-orange bg-white/40"
-                  aria-label="Go to slide 3"
-                ></button>
-                <button
-                  className="h-2.5 w-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-afs-orange bg-white/40"
-                  aria-label="Go to slide 4"
-                ></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
       {/* ============================================= */}
       {/* END: Featured Training Sessions Section       */}
       {/* ============================================= */}
