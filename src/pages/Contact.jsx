@@ -14,14 +14,20 @@ const MapPlaceholder = () => (
 function Contact() {
   // Data for the locations to keep the JSX clean
   const locations = [
-    { name: "AFS Basketball Training Academy", address: "Loyola International School, Mahanagar, Lucknow" },
-    { name: "AFS Training Academy - Parsvnath Planet", address: "Parsvnath Planet, Lucknow" },
-    { name: "AFS Training Academy - Eldeco Elegance", address: "Eldeco Elegance, Gomti Nagar, Lucknow" },
-    { name: "AFS Basketball Academy - Behind Lulu Mall", address: "Behind Lulu Mall, Lucknow" },
-    { name: "AFS Basketball Academy - Skyline Plaza", address: "1st Floor Terrace Area, Skyline Plaza 1, Sushant Golf City" },
-    { name: "AFS Basketball Academy - Jeewan Sunshine School", address: "Jeewan Sunshine School, Gomti Nagar Extension" },
-    { name: "Shalimar One World Vista", address: "Viraj Khand, Gomti Nagar, Lucknow" },
-    { name: "MI Rustle Court", address: "Near Sahara Hospital, Gomti Nagar, Lucknow" },
+    { name: "Peace Sports Academy Gomti Nagar", address: "Gomti Nagar Extension Sec-6 Lucknow, Uttar Pradesh" },
+    { name: "Kunskapsskolan", address: "Golf city sec-A" },
+    { name: "LPS Vrindavan", address: "Vrindavan sec 4b" },
+    { name: "SGPGI sports complex and hobby center", address: "SGPGI Campus, Lucknow" },
+    { name: "DLF MyPad", address: "Vibhuti Khand, Gomti Nagar" },
+    { name: "Eldeco Elegance", address: "Vrindavan Yojana, Lucknow" },
+    { name: "SJ International School", address: "Ansal API, Sushant Golf City" },
+    { name: "Gyan Sarovar", address: "Vrindavan Yojana, Lucknow" },
+    { name: "Mandakini Enclave", address: "Alaknanda Vihar, Vrindavan Yojana" },
+    { name: "Bhagirathi Enclave", address: "Vrindavan Yojana, Lucknow" },
+    { name: "Shalimar One World", address: "Gomti Nagar Extension, Lucknow" },
+    { name: "Gold Star Homes", address: "Vrindavan Yojana, Lucknow" },
+    { name: "Paarth Aadyant", address: "Near Ekana Stadium, Lucknow" },
+    { name: "LPS Campus 2", address: "Vrindavan Yojana, Lucknow" },
   ];
 
   return (
@@ -38,12 +44,12 @@ function Contact() {
             </span> Us
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Have questions about our programs or ready to start your basketball
-            journey? Our team is here to help you take the next step.
+            Have questions about our programs or ready to start your journey? Our team is here to help you take the next step.
           </p>
         </div>
 
-        {/* Contact Details Card */}
+        {/* --- Contact Details Card (UPDATED) --- */}
+        {/* Locations, Phone, and Email have been updated. */}
         <div className="glass-card rounded-xl p-8 mb-12">
           <h2 className="text-2xl font-bold mb-8">Our Contact Details</h2>
           <div className="lg:flex lg:gap-12">
@@ -82,8 +88,9 @@ function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Phone Number</h3>
-                  <p className="text-white/70">+91 72755 46210</p>
+                  <h3 className="font-semibold text-lg">Phone & WhatsApp</h3>
+                  <p className="text-white/70">Phone: 8687804879</p>
+                  <p className="text-white/70">WhatsApp: 9369051219</p>
                 </div>
               </div>
               <div className="flex items-start">
@@ -95,7 +102,7 @@ function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Email Address</h3>
-                  <p className="text-white/70">afstrainingacademy@gmail.com</p>
+                  <p className="text-white/70">officialpeacesportsacademy@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start">

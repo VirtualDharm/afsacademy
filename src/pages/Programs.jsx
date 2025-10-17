@@ -1,5 +1,6 @@
 import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
+import { Link } from 'react-router-dom'; // Import Link for proper navigation
 
 /* ----------------------------------------------
    Main Component
@@ -15,14 +16,12 @@ export default function Programs() {
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 afs-heading">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red">
-              Elevate
+              One Academy,
             </span>{" "}
-            Your Game
+            Endless Opportunities
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Choose from our comprehensive selection of basketball training
-            programs, each designed to target specific skills and tailored for
-            different experience levels.
+            Choose from our comprehensive selection of professional training programs, each designed to build discipline, fitness, and confidence.
           </p>
         </div>
 
@@ -32,39 +31,28 @@ export default function Programs() {
           <Tabs.List
             role="tablist"
             aria-orientation="horizontal"
-            className="flex h-10 items-center justify-center rounded-md p-1 bg-white/5 border border-white/10 w-max mx-auto text-muted-foreground"
+            className="flex h-10 items-center justify-center rounded-md p-1 bg-white/5 border border-white/10 w-max mx-auto text-muted-foreground flex-wrap"
           >
-            {["all", "beginner", "intermediate", "advanced", "expert"].map(
+            {["all", "Skating", "Taekwondo", "Gymnastics", "Football", "More"].map(
               (tab) => (
                 <Tabs.Trigger
                   key={tab}
                   value={tab}
                   className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-xs sm:text-sm data-[state=active]:bg-gradient-to-r data-[state=active]:from-afs-orange data-[state=active]:to-afs-red data-[state=active]:text-foreground data-[state=active]:shadow-sm"
                 >
-                  {tab === "all"
-                    ? "All Programs"
-                    : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  {tab === "all" ? "All Programs" : tab}
                 </Tabs.Trigger>
               )
             )}
           </Tabs.List>
 
-          {/* Tabs Content Panels */}
-          <Tabs.Content value="all">
-            <ProgramGrid filter="all" />
-          </Tabs.Content>
-          <Tabs.Content value="beginner">
-            <ProgramGrid filter="beginner" />
-          </Tabs.Content>
-          <Tabs.Content value="intermediate">
-            <ProgramGrid filter="intermediate" />
-          </Tabs.Content>
-          <Tabs.Content value="advanced">
-            <ProgramGrid filter="advanced" />
-          </Tabs.Content>
-          <Tabs.Content value="expert">
-            <ProgramGrid filter="expert" />
-          </Tabs.Content>
+          {/* --- Tabs Content Panels (UNCHANGED LOGIC) --- */}
+          <Tabs.Content value="all"><ProgramGrid filter="all" /></Tabs.Content>
+          <Tabs.Content value="Skating"><ProgramGrid filter="Skating" /></Tabs.Content>
+          <Tabs.Content value="Taekwondo"><ProgramGrid filter="Taekwondo" /></Tabs.Content>
+          <Tabs.Content value="Gymnastics"><ProgramGrid filter="Gymnastics" /></Tabs.Content>
+          <Tabs.Content value="Football"><ProgramGrid filter="Football" /></Tabs.Content>
+          <Tabs.Content value="More"><ProgramGrid filter="More" /></Tabs.Content>
         </Tabs.Root>
 
         {/* Call to Action */}
@@ -78,9 +66,9 @@ export default function Programs() {
               recommend the perfect training program to match your goals and
               abilities.
             </p>
-            <a className="btn-primary inline-flex" href="/contact">
+            <Link className="btn-primary inline-flex" to="/contact">
               Schedule a Free Assessment
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -93,48 +81,19 @@ export default function Programs() {
 ---------------------------------------------- */
 function ProgramGrid({ filter }) {
   const programs = [
-    {
-      img: "/media/junior.jpg",
-      title: "Beginner Training Program",
-      level: "Beginner",
-      desc: "Foundational basketball skills and fundamentals for young players just starting their basketball journey.",
-      note: "Ongoing batches",
-    },
-    {
-      img: "/media/sub-junior.jpg",
-      title: "Intermediate Training Program",
-      level: "Intermediate",
-      desc: "Develops core basketball skills - shooting technique, defensive stance, and team play fundamentals.",
-      note: "Regular sessions",
-    },
-    {
-      img: "/media/senior.jpg",
-      title: "Advanced Training Program",
-      level: "Advanced",
-      desc: "Comprehensive skill development program focusing on advanced techniques, strategies, and competitive preparation for serious players.",
-      note: "Year-round program",
-    },
-    {
-      img: "/media/expert.jpg",
-      title: "Professional Training Program",
-      level: "Expert",
-      desc: "For competitive players seeking highest-level coaching with advanced drills, game simulations, and athletic conditioning.",
-      note: "Regular sessions",
-    },
-    {
-      img: "/media/camp.jpg",
-      title: "Summer Basketball Camp",
-      level: "All Levels",
-      desc: "Daily skill-building activities, drills, and scrimmages for all age groups during summer vacations.",
-      note: "June-July",
-    },
-    {
-      img: "/media/personal1.png",
-      title: "Personal Coaching",
-      level: "All Levels",
-      desc: "One-on-one customized training sessions focusing on individual skill improvement.",
-      note: "Flexible scheduling",
-    },
+    { img: "/media/junior.jpg", title: "Speed Skating", level: "Skating", desc: "Balance, posture, speed techniques, cornering, and race strategy.", note: "Beginner to Professional" },
+    { img: "/media/sub-junior.jpg", title: "Taekwondo", level: "Taekwondo", desc: "Kicking, sparring, Self-Defence, flexibility, and discipline.", note: "Beginner to Black Belt" },
+    { img: "/media/senior.jpg", title: "Gymnastics", level: "Gymnastics", desc: "Builds confidence, balance, and body control in young athletes.", note: "Basic to Advanced" },
+    { img: "/media/expert.jpg", title: "Football", level: "Football", desc: "Dribbling, passing, teamwork, shooting, and game strategy.", note: "Grassroots to Competitive" },
+    { img: "/media/camp.jpg", title: "Basketball", level: "More", desc: "Ball handling, shooting accuracy, teamwork, and tactical play.", note: "Beginner to Team Level" },
+    { img: "/media/personal1.png", title: "Table Tennis", level: "More", desc: "Reaction time, precision, coordination, and match strategy.", note: "Basic to Competitive" },
+    { img: "/media/cricket.jpg", title: "Cricket", level: "More", desc: "Batting, bowling, fielding, and match awareness.", note: "Foundation to Advanced" },
+    { img: "/media/yoga.jpg", title: "Yoga", level: "More", desc: "Improves flexibility, balance, mindfulness, and stress relief.", note: "All Age Groups" },
+    { img: "/media/dance.jpg", title: "Dance", level: "More", desc: "Rhythm, expression, and body coordination in various styles.", note: "Classical, Western, Hip-Hop" },
+    { img: "/media/zumba.jpg", title: "Zumba & Aerobics", level: "More", desc: "Fun fitness routines combining music and movement to boost stamina.", note: "Fitness Program" },
+    { img: "/media/abacus.jpg", title: "Abacus & Brain Development", level: "More", desc: "Improves memory, speed, and problem-solving through mental arithmetic.", note: "Brain Development" },
+    { img: "/media/badminton.jpg", title: "Badminton", level: "More", desc: "Footwork, agility, stroke technique, and match play.", note: "Beginner to Competitive" },
+    { img: "/media/camps.jpg", title: "Camps & Personal Training", level: "More", desc: "Summer & Winter Camps, Fitness Training, and One-on-One Coaching.", note: "All Age Groups" },
   ];
 
   const visiblePrograms =
@@ -177,10 +136,7 @@ function ProgramCard({ img, title, level, desc, note }) {
         <p className="text-white/80 mb-4 text-sm flex-grow">{desc}</p>
         <div className="flex justify-between items-center mt-auto">
           <span className="text-white/60 text-xs sm:text-sm">{note}</span>
-          <a
-            className="flex items-center text-afs-orange hover:text-white transition-colors group/btn text-sm sm:text-base"
-            href="/contact"
-          >
+          <Link to="/contact" className="flex items-center text-afs-orange hover:text-white transition-colors group/btn text-sm sm:text-base">
             <span>Enroll Now</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -197,7 +153,7 @@ function ProgramCard({ img, title, level, desc, note }) {
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

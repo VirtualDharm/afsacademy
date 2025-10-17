@@ -6,9 +6,9 @@ const achievementsData = [
   // Page 1
   {
     imgSrc: "/media/afs_league.jpg",
-    alt: "AFS Basketball League",
-    title: "AFS Basketball League",
-    description: "We proudly organized the biggest basketball league in Lucknow, bringing together 110 teams from all over Uttar Pradesh. The league featured many national and international players, making it a grand success.",
+    alt: "State Level Tournaments",
+    title: "State Level Tournaments",
+    description: "Our students regularly participate and win in district and state-level tournaments across various sports.",
     tag: "Championship",
     icon: "star",
   },
@@ -16,56 +16,56 @@ const achievementsData = [
     imgSrc: "/media/district_level.jpg",
     alt: "Competitive Exposure for Our Players!",
     title: "Competitive Exposure for Our Players!",
-    description: "We regularly organize district-level and inter-academy tournaments, providing our players with valuable game experience and competition exposure.",
+    description: "We regularly organize inter-academy tournaments, providing our players with valuable game experience and competition exposure.",
     tag: "Player Development",
     icon: "users",
   },
   {
     imgSrc: "/media/sponsers1.jpg",
-    alt: "Proud Sponsors of Senior State Championship 2024",
-    title: "Proud Sponsors of Senior State Championship 2024",
-    description: "We are honored to have sponsored official T-shirts for the Senior State Basketball Championship 2024 held in Kanpur.",
-    tag: "Sponsorships",
+    alt: "Community Sports Events",
+    title: "Community Sports Events",
+    description: "We are honored to sponsor and participate in local sports events, contributing to the growth of sports in Uttar Pradesh.",
+    tag: "Community",
     icon: "star",
   },
   {
     imgSrc: "/media/decathalon.jpg",
     alt: "Decathlon as Our Sports Partner",
     title: "Decathlon as Our Sports Partner",
-    description: "We are proud to have Decathlon as our official sports partner, providing high-quality equipment and support to enhance the training experience.",
-    tag: "Sponsorships",
+    description: "We are proud to have Decathlon as our official sports partner, providing high-quality equipment and support for our athletes.",
+    tag: "Partnerships",
     icon: "star",
   },
   {
     imgSrc: "/media/alumni.jpg",
-    alt: "Rising Stars of AFS Academy",
-    title: "Rising Stars of AFS Academy",
-    description: "We are proud to announce that 15-20 players from our academy are representing state and national championships.",
+    alt: "Rising Stars of Peace Sports Academy",
+    title: "Rising Stars of Our Academy",
+    description: "We are proud to announce that many players from our academy are representing their state in national championships.",
     tag: "Alumni Success",
     icon: "medal",
   },
   {
     imgSrc: "/media/navya_02.jpg",
-    alt: "Navya Singh's Journey!",
-    title: "Navya Singh's Journey!",
-    description: "Navya Singh has been consistently representing the U.P. team and even secured a spot in the Under-17 Indian team tryouts.",
+    alt: "Student Success Story",
+    title: "Inspiring Journeys",
+    description: "Our athletes consistently achieve high honors, with many being selected for national team tryouts and competitions.",
     tag: "Success Stories",
     icon: "star",
   },
   // Page 2
   {
     imgSrc: "/media/inbl.jpg",
-    alt: "Winners's Indian National Basketball League",
-    title: "Winners's Indian National Basketball League",
-    description: "AFS Academy team took 1st place in the Indian National Basketball League.",
+    alt: "National League Winners",
+    title: "National League Winners",
+    description: "Peace Sports Academy teams have taken top places in various National Leagues across the country.",
     tag: "Competition",
     icon: "star",
   },
   {
     imgSrc: "/media/lucknow_team.jpg",
-    alt: "Head Coach Lucknow Team",
-    title: "Head Coach Lucknow Team",
-    description: "The head coach of the Lucknow team from 2021 up to the present day.",
+    alt: "Coaching Excellence",
+    title: "Coaching Excellence",
+    description: "Our directors and head coaches are often selected to lead city and state-level teams in prestigious tournaments.",
     tag: "Mentorship",
     icon: "star",
   },
@@ -129,9 +129,7 @@ function Achievements() {
             Achievements
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto">
-            A timeline of AFS Academy's milestones, championships, and player
-            development successes that demonstrate our commitment to basketball
-            excellence.
+            A timeline of our milestones, championships, and player development successes that demonstrate our commitment to excellence in sports.
           </p>
         </div>
 
