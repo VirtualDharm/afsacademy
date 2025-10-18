@@ -4017,3 +4017,245 @@ h6 {
 [data-side="right"] .\[\[data-side\=right\]_\&\]\:cursor-e-resize {
   cursor: e-resize;
 }
+
+/* ======================================================= */
+/* =========== START: FOUNDER MESSAGE SECTION STYLES ===== */
+/* ======================================================= */
+
+.founder-container {
+  padding: 4rem 1rem; /* 64px top/bottom, 16px left/right */
+  background-color: #f7fafc; /* A light grey background, change if needed */
+}
+
+.founder-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.founder-inner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem; /* 32px space between left and right sections */
+}
+
+/* ======================================================= */
+/* ========== BASE STRUCTURE (NON-ANIMATED PART) ========== */
+/* ======================================================= */
+
+.founder-left-section {
+  flex: 1;
+  max-width: 600px;
+}
+
+.founder-right-section {
+  flex-shrink: 0;
+}
+
+.founder-heading {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  color: rgb(27, 33, 36);
+  margin-bottom: 2rem; /* 32px */
+}
+
+.founder-quote-container {
+  position: relative;
+  padding: 1rem 2rem; /* 16px top/bottom, 32px left/right */
+}
+
+.founder-quote-icon {
+  position: absolute;
+  width: 32px;
+  height: 24px;
+}
+
+.founder-quote-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.founder-quote-icon:first-of-type {
+  top: 0;
+  left: 0;
+}
+
+.founder-right-quote-icon {
+  bottom: 0;
+  right: 0;
+}
+
+.founder-quote-text {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75;
+  font-weight: 500;
+  color: rgb(61, 61, 61);
+  font-style: italic;
+}
+
+.founder-info {
+  margin-top: 1.5rem; /* 24px */
+}
+
+.founder-name {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  color: rgb(27, 33, 36);
+}
+
+.founder-title {
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: rgb(27, 33, 36);
+}
+
+/* ======================================================= */
+/* =============== ANIMATION STYLES BELOW ================ */
+/* ======================================================= */
+
+/* Start hidden and slightly off-screen */
+.founder-left-section,
+.founder-right-section {
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Left slides in from the left */
+.founder-left-section.hidden-left {
+  transform: translateX(-100px);
+}
+
+/* Right slides in from the right */
+.founder-right-section.hidden-right {
+  transform: translateX(100px);
+}
+
+/* Once visible (triggered by JS) */
+.founder-left-section.visible,
+.founder-right-section.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Optional: Staggered delay for smoother effect */
+.founder-left-section.visible {
+  transition-delay: 0.1s;
+}
+.founder-right-section.visible {
+  transition-delay: 0.2s;
+}
+
+/* ======================================================= */
+/* =================== RESPONSIVE STYLES ================= */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+  .founder-inner-wrapper {
+    flex-direction: column-reverse; /* Stack image on top of text on mobile */
+  }
+
+  .founder-heading {
+    text-align: center;
+  }
+
+  .founder-info {
+    text-align: center;
+  }
+
+  /* Reset animation directions on mobile for smoother UX */
+  .founder-left-section.hidden-left,
+  .founder-right-section.hidden-right {
+    transform: translateY(50px);
+  }
+}
+
+/* ======================================================= */
+/* ============ END: FOUNDER MESSAGE SECTION STYLES ====== */
+/* ======================================================= */
+
+
+/* ======================================================= */
+/* =========== START: STICKY FOOTER SECTION STYLES ======= */
+/* ======================================================= */
+
+
+
+/* Sticky footer (fixed container) */
+.sticky-footer-bar {
+  display: flex;
+  justify-self: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+
+  /* keep the bar itself transparent so the inner card can be centered */
+  background: transparent;
+
+  /* Hidden by default */
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.5s ease,
+              visibility 0.5s ease;
+}
+
+.sticky-footer-bar.visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Inner card: rounded + shadow + white background (matches image) */
+.sticky-footer-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--blippi-bg-white);
+  border-radius: 12px;               /* rounded corners */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Content inside the rounded card */
+.sticky-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Text styles */
+.sticky-footer-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(27, 33, 36);
+}
+
+.sticky-footer-subheading {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(65, 67, 71);
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+  .sticky-footer-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .sticky-footer-content {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
