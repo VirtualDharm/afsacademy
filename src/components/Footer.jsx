@@ -157,9 +157,6 @@ function Footer() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-afs-orange mr-2">•</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-afs-orange mr-2">•</span>
                     <span>8687804879, 8957273494, 6387531144</span>
                   </li>
                   <li className="flex items-start">

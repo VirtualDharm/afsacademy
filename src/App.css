@@ -125,7 +125,7 @@ html,
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+  font-family: var(--blippi-primary-font),ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
   font-feature-settings: normal;
   font-variation-settings: normal;
@@ -344,7 +344,29 @@ video {
   --afs-dark-rgb: 42, 42, 42;
   --afs-orange: #ff5722;
   --afs-red: #f72119;
+
+  /* --- START: Blippi Theme Global Variables --- */
+  --blippi-grey-color: #5f5f5f;
+  --blippi-primary-color: #f15f25;
+  --blippi-secondary-color: #f9b001;
+  --blippi-dark-color: #343434;
+  --blippi-grey-light-color: #b8b8b8;
+  --blippi-accent-color: #d7f5fa;
+  --blippi-bg-dark: #151515;
+  --blippi-bg-green: #acc943;
+  --blippi-white-color: #fff;
+  --blippi-bg-white: #fff;
+  --blippi-bg-light-color: #f6f3ed;
+  --blippi-bg-grey: #f9f3e3;
+  --blippi-border-color: rgba(21, 21, 21, 0.1254901961); /* Converted from #15151520 */
+  --blippi-shadow-sm: 0px 8px 16px 0px rgba(0, 0, 0, 0.04);
+  --blippi-shadow-lg: 0px 8px 18px 0px rgba(0, 0, 0, 0.1);
+  --blippi-secondary-font: "Dosis", sans-serif; 
+  --blippi-primary-font: "Dosis", sans-serif;
+  /* --- END: Blippi Theme Global Variables --- */
+
 }
+
 .dark {
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
@@ -376,7 +398,7 @@ video {
 }
 body {
   background-color: hsl(var(--background));
-  font-family: Montserrat, sans-serif;
+  font-family: var(--blippi-primary-font), Montserrat, sans-serif;
   color: hsl(var(--foreground));
 }
 h1,
@@ -385,7 +407,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Russo One, sans-serif;
+  font-family: var(--blippi-primary-font), Russo One, sans-serif;
 }
 .container {
   width: 100%;
@@ -1755,10 +1777,10 @@ h6 {
     Liberation Mono, Courier New, monospace;
 }
 .font-montserrat {
-  font-family: Montserrat, sans-serif;
+  font-family: var(--blippi-primary-font), Montserrat, sans-serif;
 }
 .font-russo {
-  font-family: Russo One, sans-serif;
+  font-family: var(--blippi-secondary-font), Russo One, sans-serif;
 }
 .text-2xl {
   font-size: 1.5rem;
@@ -2400,7 +2422,7 @@ h6 {
   background-size: 100px 100px;
 }
 .afs-heading {
-  font-family: Russo One, sans-serif;
+  font-family: var(--blippi-primary-font), Russo One, sans-serif;
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.25;
