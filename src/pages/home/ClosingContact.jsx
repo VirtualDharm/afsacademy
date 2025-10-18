@@ -24,6 +24,70 @@ function ClosingContact() {
   ];
   const testimonial = testimonials[active];
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState(null);
+
+  // 🔥 Replace these with your actual HubSpot values
+  const HUBSPOT_PORTAL_ID = "243234182";
+  const HUBSPOT_FORM_ID = "8ab4b95c-2daa-4581-8faf-27ad6dfac0ea";
+
+  // Update state when typing
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Submit handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus(null);
+
+    try {
+      const payload = {
+        fields: [
+          { name: "firstname", value: formData.name },
+          { name: "email", value: formData.email },
+          { name: "lastname", value: formData.subject },
+          { name: "message", value: formData.message },
+        ],
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title,
+        },
+      };
+
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        const err = await response.json();
+        console.error("HubSpot Error:", err);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       {/* ============================================= */}
@@ -356,7 +420,7 @@ function ClosingContact() {
             {/* Right Column: Contact Form */}
             <div className="reveal animated">
               <div className="glass-card rounded-xl animated p-6 md:p-8">
-                <form className="space-y-5">
+                <form className="space-y-5" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label
@@ -369,9 +433,11 @@ function ClosingContact() {
                         type="text"
                         id="name"
                         name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-afs-orange/50 text-white font-montserrat"
                         placeholder="Your name"
-                        defaultValue=""
+                        required
                       />
                     </div>
                     <div>
@@ -385,6 +451,8 @@ function ClosingContact() {
                         type="email"
                         id="email"
                         name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-afs-orange/50 text-white font-montserrat"
                         placeholder="Your email"
                         defaultValue=""
@@ -402,6 +470,8 @@ function ClosingContact() {
                       type="text"
                       id="subject"
                       name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-afs-orange/50 text-white font-montserrat"
                       placeholder="How can we help you?"
                       defaultValue=""
@@ -460,24 +530,42 @@ function ClosingContact() {
                   </div>
                   <button
                     type="submit"
+                    disabled={isSubmitting}
                     className="btn-primary w-full flex items-center justify-center"
                   >
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    {isSubmitting ? (
+                      <span>Sending...</span>
+                    ) : (
+                      <>
+                        <svg
+                          className="w-5 h-5 mr-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                      ></path>
-                    </svg>
-                    Send Message
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                          ></path>
+                        </svg>
+                        Send Message
+                      </>
+                    )}
                   </button>
+
+                  {status === "success" && (
+                    <p className="text-green-400 text-sm mt-2">
+                      ✅ Message sent successfully!
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-red-400 text-sm mt-2">
+                      ❌ Something went wrong. Please try again.
+                    </p>
+                  )}
                 </form>
               </div>
             </div>

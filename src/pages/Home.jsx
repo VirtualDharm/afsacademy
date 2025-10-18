@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import HeroFeaturedHighlights from "./home/HeroFeaturedHighlights";
 import AboutPrograms from "./home/AboutPrograms";
 import ClosingContact from "./home/ClosingContact";
-import FounderMessage from "../home/FounderMessage"; 
+import FounderMessage from "./home/FounderMessage"; 
 import StickyFooter from "../components/StickyFooter"; // <-- IMPORT THIS
 
 function Home() {
