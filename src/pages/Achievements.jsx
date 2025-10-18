@@ -1,76 +1,19 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-// 1. All achievement data is consolidated into a single array of objects.
+// --- Data and Constants (UNCHANGED) ---
 const achievementsData = [
   // Page 1
-  {
-    imgSrc: "/media/afs_league.jpg",
-    alt: "State Level Tournaments",
-    title: "State Level Tournaments",
-    description: "Our students regularly participate and win in district and state-level tournaments across various sports.",
-    tag: "Championship",
-    icon: "star",
-  },
-  {
-    imgSrc: "/media/district_level.jpg",
-    alt: "Competitive Exposure for Our Players!",
-    title: "Competitive Exposure for Our Players!",
-    description: "We regularly organize inter-academy tournaments, providing our players with valuable game experience and competition exposure.",
-    tag: "Player Development",
-    icon: "users",
-  },
-  {
-    imgSrc: "/media/sponsers1.jpg",
-    alt: "Community Sports Events",
-    title: "Community Sports Events",
-    description: "We are honored to sponsor and participate in local sports events, contributing to the growth of sports in Uttar Pradesh.",
-    tag: "Community",
-    icon: "star",
-  },
-  {
-    imgSrc: "/media/decathalon.jpg",
-    alt: "Decathlon as Our Sports Partner",
-    title: "Decathlon as Our Sports Partner",
-    description: "We are proud to have Decathlon as our official sports partner, providing high-quality equipment and support for our athletes.",
-    tag: "Partnerships",
-    icon: "star",
-  },
-  {
-    imgSrc: "/media/alumni.jpg",
-    alt: "Rising Stars of Peace Sports Academy",
-    title: "Rising Stars of Our Academy",
-    description: "We are proud to announce that many players from our academy are representing their state in national championships.",
-    tag: "Alumni Success",
-    icon: "medal",
-  },
-  {
-    imgSrc: "/media/navya_02.jpg",
-    alt: "Student Success Story",
-    title: "Inspiring Journeys",
-    description: "Our athletes consistently achieve high honors, with many being selected for national team tryouts and competitions.",
-    tag: "Success Stories",
-    icon: "star",
-  },
+  { imgSrc: "/media/afs_league.jpg", alt: "State Level Tournaments", title: "State Level Tournaments", description: "Our students regularly participate and win in district and state-level tournaments across various sports.", tag: "Championship", icon: "star" },
+  { imgSrc: "/media/district_level.jpg", alt: "Competitive Exposure for Our Players!", title: "Competitive Exposure for Our Players!", description: "We regularly organize inter-academy tournaments, providing our players with valuable game experience and competition exposure.", tag: "Player Development", icon: "users" },
+  { imgSrc: "/media/sponsers1.jpg", alt: "Community Sports Events", title: "Community Sports Events", description: "We are honored to sponsor and participate in local sports events, contributing to the growth of sports in Uttar Pradesh.", tag: "Community", icon: "star" },
+  { imgSrc: "/media/decathalon.jpg", alt: "Decathlon as Our Sports Partner", title: "Decathlon as Our Sports Partner", description: "We are proud to have Decathlon as our official sports partner, providing high-quality equipment and support for our athletes.", tag: "Partnerships", icon: "star" },
+  { imgSrc: "/media/alumni.jpg", alt: "Rising Stars of Peace Sports Academy", title: "Rising Stars of Our Academy", description: "We are proud to announce that many players from our academy are representing their state in national championships.", tag: "Alumni Success", icon: "medal" },
+  { imgSrc: "/media/navya_02.jpg", alt: "Student Success Story", title: "Inspiring Journeys", description: "Our athletes consistently achieve high honors, with many being selected for national team tryouts and competitions.", tag: "Success Stories", icon: "star" },
   // Page 2
-  {
-    imgSrc: "/media/inbl.jpg",
-    alt: "National League Winners",
-    title: "National League Winners",
-    description: "Peace Sports Academy teams have taken top places in various National Leagues across the country.",
-    tag: "Competition",
-    icon: "star",
-  },
-  {
-    imgSrc: "/media/lucknow_team.jpg",
-    alt: "Coaching Excellence",
-    title: "Coaching Excellence",
-    description: "Our directors and head coaches are often selected to lead city and state-level teams in prestigious tournaments.",
-    tag: "Mentorship",
-    icon: "star",
-  },
+  { imgSrc: "/media/inbl.jpg", alt: "National League Winners", title: "National League Winners", description: "Peace Sports Academy teams have taken top places in various National Leagues across the country.", tag: "Competition", icon: "star" },
+  { imgSrc: "/media/lucknow_team.jpg", alt: "Coaching Excellence", title: "Coaching Excellence", description: "Our directors and head coaches are often selected to lead city and state-level teams in prestigious tournaments.", tag: "Mentorship", icon: "star" },
 ];
-
 const ITEMS_PER_PAGE = 6;
 
 // A reusable Icon component to avoid repeating SVG code
@@ -87,28 +30,27 @@ const Icon = ({ name, ...props }) => {
   );
 };
 
-// A reusable Card component
 const AchievementCard = ({ imgSrc, alt, title, description, tag, icon }) => (
-  <div className="card-hover glass-card rounded-xl overflow-hidden flex flex-col">
+  // UPDATED: Replaced old 'glass-card' and text colors with new theme classes
+  <div className="card-hover bg-blippi-bg-grey rounded-xl overflow-hidden flex flex-col">
     <div className="aspect-video relative overflow-hidden">
       <img src={imgSrc} alt={alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-      <div className="absolute top-3 right-3 p-2 rounded-full bg-afs-dark/80 backdrop-blur-sm">
-        <Icon name={icon} className="lucide text-afs-orange" />
+      <div className="absolute top-3 right-3 p-2 rounded-full bg-blippi-dark/80 backdrop-blur-sm">
+        <Icon name={icon} className="lucide text-blippi-primary" />
       </div>
     </div>
     <div className="p-6 flex flex-col flex-grow">
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-white/70 mb-3 flex-grow">{description}</p>
-      <span className="text-xs py-1 px-2 rounded-full bg-white/10 text-white/80 mt-auto self-start">{tag}</span>
+      <h3 className="text-xl font-bold mb-3 text-blippi-dark">{title}</h3>
+      <p className="text-blippi-grey mb-3 flex-grow">{description}</p>
+      <span className="text-xs py-1 px-2 rounded-full bg-white/10 text-blippi-grey mt-auto self-start">{tag}</span>
     </div>
   </div>
 );
 
-function Achievements() {
-  // 2. State to manage the current page number
-  const [currentPage, setCurrentPage] = useState(1);
 
-  // 3. Calculate pagination logic
+function Achievements() {
+  // --- State and Logic (UNCHANGED) ---
+  const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(achievementsData.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -117,35 +59,36 @@ function Achievements() {
   return (
     <div className="pt-24 pb-20">
       <div className="container mx-auto px-4">
-        {/* Page Header Section */}
+        {/* --- Page Header Section (UPDATED) --- */}
         <div className="text-center mb-16">
-          <span className="inline-block py-1 px-3 rounded-full text-xs uppercase tracking-wider mb-3 bg-afs-orange/20 text-afs-orange border border-afs-orange/10">
+          <span className="inline-block py-1 px-3 rounded-full text-xs uppercase tracking-wider mb-3 bg-blippi-primary/20 text-blippi-primary border border-blippi-primary/10">
             Our Success
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 afs-heading">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-afs-orange to-afs-red">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blippi-primary to-blippi-secondary">
               Academy
             </span>{" "}
             Achievements
           </h1>
-          <p className="text-white/70 max-w-2xl mx-auto">
-            A timeline of our milestones, championships, and player development successes that demonstrate our commitment to excellence in sports.
+          <p className="text-blippi-grey max-w-2xl mx-auto">
+            A timeline of our milestones, championships, and player
+            development successes that demonstrate our commitment to excellence in sports.
           </p>
         </div>
 
-        {/* 4. Grid of Achievement Cards - dynamically rendered */}
+        {/* --- Grid of Cards (UNCHANGED) --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {currentAchievements.map((achievement, index) => (
             <AchievementCard key={index} {...achievement} />
           ))}
         </div>
 
-        {/* 5. Pagination Controls - now fully functional */}
+        {/* --- Pagination Controls (UPDATED) --- */}
         <nav role="navigation" aria-label="pagination" className="mx-auto flex w-full justify-center mt-12">
           <ul className="flex flex-row items-center gap-1">
             {currentPage > 1 && (
               <li>
-                <button onClick={() => setCurrentPage(currentPage - 1)} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 gap-1 pl-2.5 cursor-pointer hover:bg-white/10">
+                <button onClick={() => setCurrentPage(currentPage - 1)} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 gap-1 pl-2.5 cursor-pointer hover:bg-blippi-grey">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-left h-4 w-4"><path d="m15 18-6-6 6-6"></path></svg>
                   <span>Previous</span>
                 </button>
@@ -160,8 +103,8 @@ function Achievements() {
                     aria-current={currentPage === pageNumber ? "page" : undefined}
                     className={`inline-flex items-center justify-center h-10 w-10 rounded-md text-sm font-medium cursor-pointer transition-colors ${
                       currentPage === pageNumber
-                        ? "border border-input bg-background text-afs-orange"
-                        : "hover:bg-white/10"
+                        ? "border border-blippi-border bg-blippi-primary text-blippi-white"
+                        : "hover:bg-blippi-grey"
                     }`}
                   >
                     {pageNumber}
@@ -171,7 +114,7 @@ function Achievements() {
             })}
             {currentPage < totalPages && (
               <li>
-                <button onClick={() => setCurrentPage(currentPage + 1)} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 gap-1 pr-2.5 cursor-pointer hover:bg-white/10" aria-label="Go to next page">
+                <button onClick={() => setCurrentPage(currentPage + 1)} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 gap-1 pr-2.5 cursor-pointer hover:bg-blippi-grey" aria-label="Go to next page">
                   <span>Next</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right h-4 w-4"><path d="m9 18 6-6-6-6"></path></svg>
                 </button>
