@@ -71,10 +71,51 @@ function Footer() {
               <h5 className="font-bold mb-4">Programs</h5>
               <ul className="space-y-2">
                 <li><Link className="text-blippi-grey hover:text-blippi-primary transition-colors" to="/programs">Speed Skating</Link></li>
-                <li><Link className="text-blippi-grey hover:text-blippi-primary transition-colors" to="/programs">Taekwondo</Link></li>
-                <li><Link className="text-blippi-grey hover:text-blippi-primary transition-colors" to="/programs">Gymnastics</Link></li>
-                <li><Link className="text-blippi-grey hover:text-blippi-primary transition-colors" to="/programs">Football</Link></li>
-                <li><Link className="text-blippi-grey hover:text-blippi-primary transition-colors" to="/programs">And More...</Link></li>
+                <li>
+                  <Link
+                    className="text-blippi-grey hover:text-blippi-primary transition-colors"
+                    to="/programs"
+                    state={{ tab: "Taekwondo" }}
+                  >
+                    Taekwondo
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-blippi-grey hover:text-blippi-primary transition-colors"
+                    to="/programs"
+                    state={{ tab: "Skating" }}
+                  >
+                    Speed Skating
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-blippi-grey hover:text-blippi-primary transition-colors"
+                    to="/programs"
+                    state={{ tab: "Gymnastics" }}
+                  >
+                    Gymnastics
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-blippi-grey hover:text-blippi-primary transition-colors"
+                    to="/programs"
+                    state={{ tab: "Football" }}
+                  >
+                    Football
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-blippi-grey hover:text-blippi-primary transition-colors"
+                    to="/programs"
+                    state={{ tab: "More" }}
+                  >
+                    And More...
+                  </Link>
+                </li>
               </ul>
             </div>
 
