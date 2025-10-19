@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Using Link for internal navigation
 import "../App.css";
+import { locations } from "../data";
+
 
 // This is a placeholder for the map. In a real application, you'd use a library
 // like @vis.gl/react-google-maps to render an interactive map here.
@@ -14,24 +16,6 @@ const MapPlaceholder = () => (
 );
 
 function Contact() {
-  // Data for the locations to keep the JSX clean
-  const locations = [
-    { name: "Peace Sports Academy Gomti Nagar", address: "Gomti Nagar Extension Sec-6 Lucknow, Uttar Pradesh" },
-    { name: "Kunskapsskolan", address: "Golf city sec-A" },
-    { name: "LPS Vrindavan", address: "Vrindavan sec 4b" },
-    { name: "SGPGI sports complex and hobby center", address: "SGPGI Campus, Lucknow" },
-    { name: "DLF MyPad", address: "Vibhuti Khand, Gomti Nagar" },
-    { name: "Eldeco Elegance", address: "Vrindavan Yojana, Lucknow" },
-    { name: "SJ International School", address: "Ansal API, Sushant Golf City" },
-    { name: "Gyan Sarovar", address: "Vrindavan Yojana, Lucknow" },
-    { name: "Mandakini Enclave", address: "Alaknanda Vihar, Vrindavan Yojana" },
-    { name: "Bhagirathi Enclave", address: "Vrindavan Yojana, Lucknow" },
-    { name: "Shalimar One World", address: "Gomti Nagar Extension, Lucknow" },
-    { name: "Gold Star Homes", address: "Vrindavan Yojana, Lucknow" },
-    { name: "Paarth Aadyant", address: "Near Ekana Stadium, Lucknow" },
-    { name: "LPS Campus 2", address: "Vrindavan Yojana, Lucknow" },
-  ];
-
   return (
     <div className="pt-24 pb-20">
       <div className="container mx-auto px-4">
