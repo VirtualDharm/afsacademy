@@ -3,25 +3,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../App.css";
+import { testimonials } from "../../data";
+
 
 // This component contains the CTA, Coaches, Testimonials, and Contact sections.
 function ClosingContact() {
   // Logic for testimonials is kept here as it's only used in this component.
   const [active, setActive] = useState(0);
-  const testimonials = [
-    {
-      name: "Navya Singh",
-      title: "National Player",
-      text: "Peace Sports Academy's elite training refined my skills and discipline, helping me represent UP and earn a shot at the Indian U-17 national team!",
-      img: "/media/navya.jpg",
-    },
-    {
-      name: "Shubham Singh",
-      title: "National Player",
-      text: "Training with Peace Sports Academy was the turning point in my career. Their elite coaching staff pushed me to levels I didn't think were possible.",
-      img: "/media/Shubham_singh.jpg",
-    },
-  ];
   const testimonial = testimonials[active];
 
   const [formData, setFormData] = useState({

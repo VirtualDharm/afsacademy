@@ -1,0 +1,16 @@
+[
+  { "id": 1, "name": "Peace Sports Academy Gomti Nagar", "address": "Gomti Nagar Extension Sec-6 Lucknow, Uttar Pradesh" },
+  { "id": 2, "name": "Kunskapsskolan", "address": "Golf city sec-A" },
+  { "id": 3, "name": "LPS Vrindavan", "address": "Vrindavan sec 4b" },
+  { "id": 4, "name": "SGPGI sports complex and hobby center", "address": "SGPGI Campus, Lucknow" },
+  { "id": 5, "name": "DLF MyPad", "address": "Vibhuti Khand, Gomti Nagar" },
+  { "id": 6, "name": "Eldeco Elegance", "address": "Vrindavan Yojana, Lucknow" },
+  { "id": 7, "name": "SJ International School", "address": "Ansal API, Sushant Golf City" },
+  { "id": 8, "name": "Gyan Sarovar", "address": "Vrindavan Yojana, Lucknow" },
+  { "id": 9, "name": "Mandakini Enclave", "address": "Alaknanda Vihar, Vrindavan Yojana" },
+  { "id": 10, "name": "Bhagirathi Enclave", "address": "Vrindavan Yojana, Lucknow" },
+  { "id": 11, "name": "Shalimar One World", "address": "Gomti Nagar Extension, Lucknow" },
+  { "id": 12, "name": "Gold Star Homes", "address": "Vrindavan Yojana, Lucknow" },
+  { "id": 13, "name": "Paarth Aadyant", "address": "Near Ekana Stadium, Lucknow" },
+  { "id": 14, "name": "LPS Campus 2", "address": "Vrindavan Yojana, Lucknow" }
+]

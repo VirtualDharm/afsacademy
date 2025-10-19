@@ -2,6 +2,8 @@ import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Link } from 'react-router-dom';
 import "../App.css";
+import { programs } from "../data";
+
 
 // --- Main Component ---
 export default function Programs() {
@@ -73,21 +75,6 @@ export default function Programs() {
 
 // --- ProgramGrid Helper (UNCHANGED LOGIC) ---
 function ProgramGrid({ filter }) {
-  const programs = [
-    { img: "/media/junior.jpg", title: "Speed Skating", level: "Skating", desc: "Balance, posture, speed techniques, cornering, and race strategy.", note: "Beginner to Professional" },
-    { img: "/media/sub-junior.jpg", title: "Taekwondo", level: "Taekwondo", desc: "Kicking, sparring, Self-Defence, flexibility, and discipline.", note: "Beginner to Black Belt" },
-    { img: "/media/senior.jpg", title: "Gymnastics", level: "Gymnastics", desc: "Builds confidence, balance, and body control in young athletes.", note: "Basic to Advanced" },
-    { img: "/media/expert.jpg", title: "Football", level: "Football", desc: "Dribbling, passing, teamwork, shooting, and game strategy.", note: "Grassroots to Competitive" },
-    { img: "/media/camp.jpg", title: "Basketball", level: "More", desc: "Ball handling, shooting accuracy, teamwork, and tactical play.", note: "Beginner to Team Level" },
-    { img: "/media/personal1.png", title: "Table Tennis", level: "More", desc: "Reaction time, precision, coordination, and match strategy.", note: "Basic to Competitive" },
-    { img: "/media/cricket.jpg", title: "Cricket", level: "More", desc: "Batting, bowling, fielding, and match awareness.", note: "Foundation to Advanced" },
-    { img: "/media/yoga.jpg", title: "Yoga", level: "More", desc: "Improves flexibility, balance, mindfulness, and stress relief.", note: "All Age Groups" },
-    { img: "/media/dance.jpg", title: "Dance", level: "More", desc: "Rhythm, expression, and body coordination in various styles.", note: "Classical, Western, Hip-Hop" },
-    { img: "/media/zumba.jpg", title: "Zumba & Aerobics", level: "More", desc: "Fun fitness routines combining music and movement to boost stamina.", note: "Fitness Program" },
-    { img: "/media/abacus.jpg", title: "Abacus & Brain Development", level: "More", desc: "Improves memory, speed, and problem-solving through mental arithmetic.", note: "Brain Development" },
-    { img: "/media/badminton.jpg", title: "Badminton", level: "More", desc: "Footwork, agility, stroke technique, and match play.", note: "Beginner to Competitive" },
-    { img: "/media/camps.jpg", title: "Camps & Personal Training", level: "More", desc: "Summer & Winter Camps, Fitness Training, and One-on-One Coaching.", note: "All Age Groups" },
-  ];
 
   const visiblePrograms =
     filter === "all"

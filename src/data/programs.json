@@ -1,0 +1,14 @@
+[
+  { "id": 1, "img": "/media/junior.jpg", "title": "Speed Skating", "level": "Skating", "desc": "Balance, posture, speed techniques, cornering, and race strategy.", "note": "Beginner to Professional" },
+  { "id": 2, "img": "/media/sub-junior.jpg", "title": "Taekwondo", "level": "Taekwondo", "desc": "Kicking, sparring, Self-Defence, flexibility, and discipline.", "note": "Beginner to Black Belt" },
+  { "id": 3, "img": "/media/senior.jpg", "title": "Gymnastics", "level": "Gymnastics", "desc": "Builds confidence, balance, and body control in young athletes.", "note": "Basic to Advanced" },
+  { "id": 4, "img": "/media/expert.jpg", "title": "Football", "level": "Football", "desc": "Dribbling, passing, teamwork, shooting, and game strategy.", "note": "Grassroots to Competitive" },
+  { "id": 5, "img": "/media/camp.jpg", "title": "Basketball", "level": "More", "desc": "Ball handling, shooting accuracy, teamwork, and tactical play.", "note": "Beginner to Team Level" },
+  { "id": 6, "img": "/media/personal1.png", "title": "Table Tennis", "level": "More", "desc": "Reaction time, precision, coordination, and match strategy.", "note": "Basic to Competitive" },
+  { "id": 7, "img": "/media/cricket.jpg", "title": "Cricket", "level": "More", "desc": "Batting, bowling, fielding, and match awareness.", "note": "Foundation to Advanced" },
+  { "id": 8, "img": "/media/yoga.jpg", "title": "Yoga", "level": "More", "desc": "Improves flexibility, balance, mindfulness, and stress relief.", "note": "All Age Groups" },
+  { "id": 9, "img": "/media/dance.jpg", "title": "Dance", "level": "More", "desc": "Rhythm, expression, and body coordination in various styles.", "note": "Classical, Western, Hip-Hop" },
+  { "id": 10, "img": "/media/zumba.jpg", "title": "Zumba & Aerobics", "level": "More", "desc": "Fun fitness routines combining music and movement to boost stamina.", "note": "Fitness Program" },
+  { "id": 11, "img": "/media/abacus.jpg", "title": "Abacus & Brain Development", "level": "More", "desc": "Improves memory, speed, and problem-solving through mental arithmetic.", "note": "Brain Development" },
+  { "id": 12, "img": "/media/badminton.jpg", "title": "Badminton", "level": "More", "desc": "Footwork, agility, stroke technique, and match play.", "note": "Beginner to Competitive" }
+]

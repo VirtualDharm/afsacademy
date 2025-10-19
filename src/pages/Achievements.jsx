@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
+import { achievements as achievementsData } from "../data";
 
-// --- Data and Constants (UNCHANGED) ---
-const achievementsData = [
-  // Page 1
-  { imgSrc: "/media/afs_league.jpg", alt: "State Level Tournaments", title: "State Level Tournaments", description: "Our students regularly participate and win in district and state-level tournaments across various sports.", tag: "Championship", icon: "star" },
-  { imgSrc: "/media/district_level.jpg", alt: "Competitive Exposure for Our Players!", title: "Competitive Exposure for Our Players!", description: "We regularly organize inter-academy tournaments, providing our players with valuable game experience and competition exposure.", tag: "Player Development", icon: "users" },
-  { imgSrc: "/media/sponsers1.jpg", alt: "Community Sports Events", title: "Community Sports Events", description: "We are honored to sponsor and participate in local sports events, contributing to the growth of sports in Uttar Pradesh.", tag: "Community", icon: "star" },
-  { imgSrc: "/media/decathalon.jpg", alt: "Decathlon as Our Sports Partner", title: "Decathlon as Our Sports Partner", description: "We are proud to have Decathlon as our official sports partner, providing high-quality equipment and support for our athletes.", tag: "Partnerships", icon: "star" },
-  { imgSrc: "/media/alumni.jpg", alt: "Rising Stars of Peace Sports Academy", title: "Rising Stars of Our Academy", description: "We are proud to announce that many players from our academy are representing their state in national championships.", tag: "Alumni Success", icon: "medal" },
-  { imgSrc: "/media/navya_02.jpg", alt: "Student Success Story", title: "Inspiring Journeys", description: "Our athletes consistently achieve high honors, with many being selected for national team tryouts and competitions.", tag: "Success Stories", icon: "star" },
-  // Page 2
-  { imgSrc: "/media/inbl.jpg", alt: "National League Winners", title: "National League Winners", description: "Peace Sports Academy teams have taken top places in various National Leagues across the country.", tag: "Competition", icon: "star" },
-  { imgSrc: "/media/lucknow_team.jpg", alt: "Coaching Excellence", title: "Coaching Excellence", description: "Our directors and head coaches are often selected to lead city and state-level teams in prestigious tournaments.", tag: "Mentorship", icon: "star" },
-];
 const ITEMS_PER_PAGE = 6;
 
 // A reusable Icon component to avoid repeating SVG code

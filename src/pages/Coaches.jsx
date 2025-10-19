@@ -1,56 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../App.css"; // Make sure to import App.css if not already
+import { coaches as coachesData } from "../data";
 
-const coachesData = [
-  // Skating
-  { name: "Miss. Pratibha Gautam", title: "Skating Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss Swati Gupta", title: "Skating Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss Pratibha", title: "Skating Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Anshil Singh", title: "Skating Coach", imageUrl: "/media/no-image.jpg" },
-  // Taekwondo
-  { name: "Mr. Dharmendra Kumar", title: "Taekwondo Coach", imageUrl: "/media/coach_photo.jpg" }, // Assuming this is the director
-  { name: "Mr. Jeetendra Shah", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Sanidhya Gupta", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Shashank Verma", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss. Pratibha Yadav", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss. Sakshi Rawat", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Subham Rawat", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Yusuf khan", title: "Taekwondo Coach", imageUrl: "/media/no-image.jpg" },
-  // Gymnastics
-  { name: "Mr. Pradumn Singh Yadav", title: "Gymnastics Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Dheeraj", title: "Gymnastics Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Utkarsh Tiwari", title: "Gymnastics Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss. Harshita kumari", title: "Gymnastics Coach", imageUrl: "/media/no-image.jpg" },
-  // Badminton
-  { name: "Mr. Virendra Kumar", title: "Badminton Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Aman Bajpai", title: "Badminton Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Adarsh Singh", title: "Badminton Coach", imageUrl: "/media/no-image.jpg" },
-  // Dance/Zumba/Aerobics
-  { name: "Miss. Khusboo Rani", title: "Dance/Zumba Teacher", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Vivek Sharma", title: "Dance/Zumba Teacher", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss. Sidhi", title: "Dance/Zumba Teacher", imageUrl: "/media/no-image.jpg" },
-  // Football
-  { name: "Mr. Virendra Kumar", title: "Football Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Deepak", title: "Football Coach", imageUrl: "/media/no-image.jpg" },
-  // Basketball
-  { name: "Mr. Shivam Sharma", title: "Basketball Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Devendra", title: "Basketball Coach", imageUrl: "/media/no-image.jpg" },
-  // Cricket
-  { name: "Mr. Ajay Gautam", title: "Cricket Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Vivek Singh", title: "Cricket Coach", imageUrl: "/media/no-image.jpg" },
-  // Abacus
-  { name: "Mr. Jeetendra shah", title: "Abacus Teacher", imageUrl: "/media/no-image.jpg" },
-  { name: "Mrs. Deepa Arya", title: "Abacus Teacher", imageUrl: "/media/no-image.jpg" },
-  // Table Tennis
-  { name: "Mr. Aryan Yadav", title: "Table Tennis Coach", imageUrl: "/media/no-image.jpg" },
-  { name: "Mr. Karsh Mishra", title: "Table Tennis Coach", imageUrl: "/media/no-image.jpg" },
-  // Yoga
-  { name: "Miss Aakancha Shukla", title: "Yoga Teacher", imageUrl: "/media/no-image.jpg" },
-  { name: "Miss. Shilpa Singh", title: "Yoga Teacher", imageUrl: "/media/no-image.jpg" },
-  // Lawn Tennis
-  { name: "Mr. Vishal", title: "Lawn Tennis Coach", imageUrl: "/media/no-image.jpg" },
-];
 
 function Coaches() {
   const [showAll, setShowAll] = useState(false);
