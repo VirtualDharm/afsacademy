@@ -3706,7 +3706,6 @@ h6 {
   background-color: transparent;
   overflow: hidden;
   position: relative;
-  display: inline-block;
   color: var(--blippi-white-color);
   font-size: 14px;
   line-height: 45px;
@@ -4259,3 +4258,88 @@ h6 {
     gap: 0.75rem;
   }
 }
+
+
+/* ======================================================= */
+/* ====== START: MISSING UTILITY CLASS DEFINITIONS ======= */
+/* ======================================================= */
+
+/* --- Missing Background & Opacity Variations --- */
+.bg-blippi-bg-white { 
+  background-color: var(--blippi-bg-white); 
+}
+.bg-blippi-dark\/80 { 
+  background-color: color-mix(in srgb, var(--blippi-dark-color) 80%, transparent); 
+}
+.bg-blippi-grey\/50 { 
+  background-color: color-mix(in srgb, var(--blippi-bg-grey) 50%, transparent); 
+}
+.bg-blippi-primary\/20 { 
+  background-color: color-mix(in srgb, var(--blippi-primary-color) 20%, transparent); 
+}
+.bg-blippi-primary\/30 { 
+  background-color: color-mix(in srgb, var(--blippi-primary-color) 30%, transparent); 
+}
+.bg-blippi-border { 
+  background-color: var(--blippi-border-color); 
+}
+.from-blippi-dark\/80 {
+  --tw-gradient-from: color-mix(in srgb, var(--blippi-dark-color) 80%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+.from-blippi-dark\/90 {
+  --tw-gradient-from: color-mix(in srgb, var(--blippi-dark-color) 90%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+
+/* --- Missing Border & Opacity Variations --- */
+.border-blippi-primary\/10 { 
+  border-color: color-mix(in srgb, var(--blippi-primary-color) 10%, transparent); 
+}
+.border-blippi-primary\/20 { 
+  border-color: color-mix(in srgb, var(--blippi-primary-color) 20%, transparent); 
+}
+
+/* --- Missing Text Color Variations --- */
+.text-blippi-grey-light { 
+  color: var(--blippi-grey-light-color); 
+}
+.text-blippi-secondary { 
+  color: var(--blippi-secondary-color); 
+}
+
+/* --- Missing Transform & Translate Classes --- */
+.-translate-y-full {
+  --tw-translate-y: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group:hover .group-hover\:scale-105 {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+/* --- Missing State-based Classes (data-*, focus: etc.) --- */
+.data-\[state\=active\]\:text-blippi-white[data-state="active"] { 
+  color: var(--blippi-white-color); 
+}
+.focus\:ring-blippi-primary\/50:focus {
+  --tw-ring-color: color-mix(in srgb, var(--blippi-primary-color) 50%, transparent);
+}
+
+/* --- Missing Hover State Classes --- */
+.hover\:bg-blippi-grey:hover {
+  background-color: var(--blippi-bg-grey);
+}
+.hover\:text-blippi-dark:hover {
+  color: var(--blippi-dark-color);
+}
+
+/* --- Missing Flexbox/Layout Classes --- */
+.self-start { 
+  align-self: flex-start; 
+}
+
+/* ======================================================= */
+/* ======== END: MISSING UTILITY CLASS DEFINITIONS ======= */
+/* ======================================================= */

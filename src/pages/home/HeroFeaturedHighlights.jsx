@@ -74,8 +74,11 @@ function HeroFeaturedHighlights() {
             One Academy, Endless Opportunities.
           </p>
 
-          <div className="space-x-4 flex flex-wrap justify-center gap-4">
-            <Link className="blippi-btn inline-flex items-center" to="/programs"> {/* UPDATED */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/programs"
+              className="blippi-btn inline-flex items-center gap-2 font-semibold text-white"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -86,15 +89,19 @@ function HeroFeaturedHighlights() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="lucide lucide-circle-dot mr-2"
+                className="lucide lucide-circle-dot block"
               >
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="1" />
               </svg>
               Explore Programs
             </Link>
-            <Link className="text-blippi-dark hover:text-blippi-primary font-semibold transition-colors" to="/coaches"> {/* UPDATED */}
-            <svg
+
+            <Link
+              to="/coaches"
+              className="inline-flex items-center gap-2 font-semibold text-blippi-dark hover:text-blippi-primary transition-colors"
+            >
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
@@ -104,10 +111,10 @@ function HeroFeaturedHighlights() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="lucide lucide-circle-dot mr-2"
+                className="lucide lucide-circle-dot block"
               >
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="1" />
               </svg>
               Meet Our Coaches
             </Link>
