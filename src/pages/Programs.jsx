@@ -1,24 +1,43 @@
+// src/pages/home/Programs.jsx
+
 import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import { programs } from "../data";
 
+// ============================================================================
+// COMPONENT: Programs
+// Description:
+// Displays all training programs offered by Peace Sports Academy.
+// Includes tab-based filtering (Skating, Taekwondo, Gymnastics, Football, etc.)
+// and a CTA section to schedule a free assessment.
+// ============================================================================
 export default function Programs() {
   const location = useLocation();
   const [tab, setTab] = React.useState("all");
 
-  // 🧩 Update tab every time location or state changes
+  // --------------------------------------------------------------------------
+  // EFFECT: Sync tab with navigation state
+  // When user navigates from another page with a state (e.g. { tab: 'Skating' }),
+  // update the active tab accordingly and reset the history.
+  // --------------------------------------------------------------------------
   React.useEffect(() => {
     const targetTab = location.state?.tab || "all";
     setTab(targetTab);
     window.history.replaceState({}, document.title);
   }, [location]);
 
+  // --------------------------------------------------------------------------
+  // RENDER
+  // --------------------------------------------------------------------------
   return (
     <div className="pt-24 pb-20">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
+        {/* =================================================================== */}
+        {/* SECTION 1: PAGE HEADER */}
+        {/* Introduces the Programs page with title and short description. */}
+        {/* =================================================================== */}
         <div className="text-center mb-12 sm:mb-16 reveal animated">
           <span className="inline-block py-1 px-3 rounded-full text-xs uppercase tracking-wider mb-3 bg-blippi-primary/20 text-blippi-primary border border-blippi-primary/10">
             Training Programs
@@ -30,17 +49,22 @@ export default function Programs() {
             Endless Opportunities
           </h1>
           <p className="text-blippi-grey max-w-2xl mx-auto text-sm sm:text-base">
-            Choose from our comprehensive selection of professional training programs, each designed to build discipline, fitness, and confidence.
+            Choose from our comprehensive selection of professional training programs,
+            each designed to build discipline, fitness, and confidence.
           </p>
         </div>
 
-        {/* Tabs */}
+        {/* =================================================================== */}
+        {/* SECTION 2: PROGRAM TABS */}
+        {/* Tab-based filtering system for viewing different sports categories. */}
+        {/* =================================================================== */}
         <Tabs.Root
           value={tab}
           onValueChange={setTab}
           orientation="horizontal"
           className="mb-12"
         >
+          {/* Tabs List */}
           <Tabs.List
             role="tablist"
             aria-orientation="horizontal"
@@ -59,7 +83,10 @@ export default function Programs() {
             )}
           </Tabs.List>
 
-          {/* Tab Panels */}
+          {/* ---------------------------------------------------------------- */}
+          {/* TAB CONTENT PANELS */}
+          {/* Each tab renders ProgramGrid filtered by category. */}
+          {/* ---------------------------------------------------------------- */}
           <Tabs.Content value="all"><ProgramGrid filter="all" /></Tabs.Content>
           <Tabs.Content value="Skating"><ProgramGrid filter="Skating" /></Tabs.Content>
           <Tabs.Content value="Taekwondo"><ProgramGrid filter="Taekwondo" /></Tabs.Content>
@@ -68,16 +95,29 @@ export default function Programs() {
           <Tabs.Content value="More"><ProgramGrid filter="More" /></Tabs.Content>
         </Tabs.Root>
 
-        {/* Call to Action */}
+        {/* =================================================================== */}
+        {/* SECTION 3: CALL TO ACTION */}
+        {/* Encourages users to schedule a free skill assessment. */}
+        {/* =================================================================== */}
         <div className="mt-12 sm:mt-16 text-center reveal animated">
-          <div className="max-w-3xl mx-auto bg-blippi-grey border border-blippi-border rounded-xl p-6 sm:p-8"> {/* UPDATED */}
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-blippi-dark">Not sure which program is right for you?</h3> {/* UPDATED */}
+          <div className="max-w-3xl mx-auto bg-blippi-grey border border-blippi-border rounded-xl p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-blippi-dark">
+              Not sure which program is right for you?
+            </h3>
             <p className="text-blippi-grey mb-4 sm:mb-6 text-sm sm:text-base">
-              Our expert coaches can help assess your current skill level and recommend the perfect training program to match your goals and abilities.
+              Our expert coaches can help assess your current skill level and
+              recommend the perfect training program to match your goals and abilities.
             </p>
-            <Link className="blippi-btn inline-flex" to="/contact"> {/* UPDATED */}
+            <Link className="blippi-btn inline-flex" to="/contact">
               Schedule a Free Assessment
-              <span className="blob-inner"><span className="blobs"><span></span><span></span><span></span><span></span></span></span>
+              <span className="blob-inner">
+                <span className="blobs">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </span>
             </Link>
           </div>
         </div>
@@ -86,6 +126,11 @@ export default function Programs() {
   );
 }
 
+// ============================================================================
+// COMPONENT: ProgramGrid
+// Description:
+// Renders a filtered grid of program cards depending on the selected category.
+// ============================================================================
 function ProgramGrid({ filter }) {
   const visiblePrograms =
     filter === "all"
@@ -103,9 +148,15 @@ function ProgramGrid({ filter }) {
   );
 }
 
+// ============================================================================
+// COMPONENT: ProgramCard
+// Description:
+// Individual program card showing image, title, level, description, and CTA.
+// ============================================================================
 function ProgramCard({ img, title, level, desc, note }) {
   return (
     <div className="overflow-hidden rounded-xl relative group bg-blippi-bg-white shadow-lg animate-fade-in h-full flex flex-col transition-all duration-300 hover:-translate-y-2">
+      {/* Program Image */}
       <div className="aspect-[4/3] w-full overflow-hidden flex-shrink-0 relative">
         <img
           src={img}
@@ -114,6 +165,8 @@ function ProgramCard({ img, title, level, desc, note }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-blippi-dark/80 via-transparent to-transparent"></div>
       </div>
+
+      {/* Program Details */}
       <div className="p-6 relative z-10 flex-grow flex flex-col">
         <div className="flex justify-between items-start mb-3 gap-2">
           <h3 className="text-blippi-dark text-lg font-medium">{title}</h3>
@@ -122,6 +175,8 @@ function ProgramCard({ img, title, level, desc, note }) {
           </span>
         </div>
         <p className="text-blippi-grey mb-4 text-sm flex-grow">{desc}</p>
+        
+        {/* Enroll Button */}
         <div className="flex justify-between items-center mt-auto">
           <span className="text-blippi-grey/70 text-xs sm:text-sm">{note}</span>
           <Link
